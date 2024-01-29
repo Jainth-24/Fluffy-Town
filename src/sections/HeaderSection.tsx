@@ -54,7 +54,7 @@ export function HeaderSection(props: any) {
           </NextLink>
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
-          {menu.items.map((item:any) => (
+          {menu.items.map((item: any) => (
             <NextLink
               className={clsx(
                 'text-sm font-semibold leading-6 text-gray-900',

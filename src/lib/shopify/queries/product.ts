@@ -97,19 +97,19 @@ export const PRODUCT_VARIANT_FRAGMENT = `#graphql
 `;
 
 export const getProductQuery = /* GraphQL */ `
-	query getProduct($handle: String!) {
-		product(handle: $handle) {
-			...product
-		}
-	}
-	${productFragment}
+  query getProduct($handle: String!) {
+    product(handle: $handle) {
+      ...product
+    }
+  }
+  ${productFragment}
 `;
 
 export const getProductRecommendationsQuery = /* GraphQL */ `
-	query getProductRecommendations($productId: ID!) {
-		productRecommendations(productId: $productId) {
-			...product
-		}
-	}
-	${productFragment}
+  query getProductRecommendations($productId: ID!) {
+    productRecommendations(productId: $productId) {
+      ...product
+    }
+  }
+  ${productFragment}
 `;

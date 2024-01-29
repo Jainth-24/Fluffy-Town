@@ -9,8 +9,8 @@ export default function Page() {
     <StoreLayout>
       <HeroSection />
       <Benefits />
-      <CollectionSection/>
-      <FeaturedProducts/>
+      <CollectionSection />
+      <FeaturedProducts />
     </StoreLayout>
   );
 }

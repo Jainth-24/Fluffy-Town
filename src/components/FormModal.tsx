@@ -3,39 +3,36 @@ import { IconClose } from './Icon';
 import { Text } from './Text';
 
 interface IFormModal {
-	heading: string;
-	children: React.ReactNode;
-	action: () => void;
+  heading: string;
+  children: React.ReactNode;
+  action: () => void;
 }
 
 function FormModal({ heading, children, action }: IFormModal) {
-	return (
-		<>
-			<div className="fixed inset-0 z-20 transition-opacity bg-opacity-75 bg-primary/40" />
-			<div className="fixed inset-0 z-50 overflow-y-auto">
-				<div className="flex items-center justify-center min-h-full p-4 text-center sm:p-0">
-					<div className="relative flex-1 px-4 pt-5 pb-4 overflow-hidden text-left transition-all transform rounded shadow-xl bg-contrast sm:my-12 sm:flex-none sm:w-full sm:max-w-sm sm:p-6">
-						<Text className="mt-4 mb-6" as="h3" size="lead">
-							{heading}
-						</Text>
-						<form
-							className="absolute top-0 right-0 hidden pt-4 pr-4 sm:block"
-							action={action}
-						>
-							<Button
-								className="p-4 -m-4 transition text-primary hover:text-primary/50"
-								type="submit"
-								variant="outline"
-							>
-								<IconClose />
-							</Button>
-						</form>
-						<div className="max-w-lg">{children}</div>
-					</div>
-				</div>
-			</div>
-		</>
-	);
+  return (
+    <>
+      <div className="bg-primary/40 fixed inset-0 z-20 bg-opacity-75 transition-opacity" />
+      <div className="fixed inset-0 z-50 overflow-y-auto">
+        <div className="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+          <div className="bg-contrast relative flex-1 overflow-hidden rounded px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-12 sm:w-full sm:max-w-sm sm:flex-none sm:p-6">
+            <Text className="mb-6 mt-4" as="h3" size="lead">
+              {heading}
+            </Text>
+            <form className="absolute right-0 top-0 hidden pr-4 pt-4 sm:block" action={action}>
+              <Button
+                className="text-primary hover:text-primary/50 -m-4 p-4 transition"
+                type="submit"
+                variant="outline"
+              >
+                <IconClose />
+              </Button>
+            </form>
+            <div className="max-w-lg">{children}</div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default FormModal;

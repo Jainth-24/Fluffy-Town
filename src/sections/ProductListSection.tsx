@@ -62,7 +62,7 @@ export function ProductListSection(props: DataProps<typeof fetchProductListSecti
                   alt={node.featuredImage!.altText || ''}
                   height={node.featuredImage!.height}
                   width={node.featuredImage!.width}
-                  className="h-full w-full object-cover object-center group-hover:opacity-75"
+                  className="size-full object-cover object-center group-hover:opacity-75"
                 />
               </div>
               <h3 className="mt-4 text-sm text-gray-700">{node.title}</h3>

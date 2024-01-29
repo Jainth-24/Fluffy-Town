@@ -8,7 +8,7 @@ import { revalidatePath } from 'next/cache';
 import { updateAccount } from '@site/lib/shopify';
 import { redirect } from 'next/navigation';
 import FormModal from './FormModal';
-import FormButton from '@site/pages/account/component/FormButton';
+import FormButton from '@site/components/FormButton';
 import { useRouter } from 'next/router';
 
 let formError: string | null = null;
@@ -17,7 +17,7 @@ interface IAccountForm {
   customer?: Customer;
 }
 function AccountForm({ customer }: IAccountForm) {
-	const router = useRouter()
+  const router = useRouter();
   const handleSubmit = async (formData: FormData) => {
     formError = null;
 

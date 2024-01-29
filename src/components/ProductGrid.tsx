@@ -96,7 +96,7 @@ export default function ProductGrid({ ...props }: { handle: string }) {
 					<ProductCard key={product.id} product={product} />
 				))}
 			</Grid>
-			<div className="flex items-center justify-center mt-6" ref={nextLinkRef}>
+			<div className="mt-6 flex items-center justify-center" ref={nextLinkRef}>
 				{isLoading && (
 					<Button variant="secondary" width="full">
 						Loading

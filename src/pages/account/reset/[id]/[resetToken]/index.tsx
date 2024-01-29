@@ -1,8 +1,8 @@
-import FormButton from '@site/pages/account/component/FormButton';
-import FormHeader from '@site/pages/account/component/FormHeader';
+import FormButton from '@site/components/FormButton';
+import FormHeader from '@site/components/FormHeader';
 import { resetCustomersPassword } from '@site/lib/shopify';
 import { getInputStyleClasses } from '@site/lib/utils';
-import AuthLayout from '@site/pages/account/component/AuthLayout';
+import AuthLayout from '@site/components/AuthLayout';
 import { revalidatePath } from 'next/cache';
 import Cookies from 'js-cookie';
 import { redirect } from 'next/navigation';

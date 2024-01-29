@@ -3,12 +3,12 @@ import { revalidatePath } from 'next/cache';
 import Cookies from 'js-cookie';
 import { MailingAddress } from '@site/lib/shopify/types';
 import { deleteAddress } from '@site/lib/shopify';
-import FormButton from '@site/pages/account/component/FormButton';
+import FormButton from '@site/components/FormButton';
 import { convertObjectToQueryString } from '@site/lib/utils';
 import { useRouter } from 'next/router';
 
 function AddressCard({ address, defaultAddress }: { address: MailingAddress; defaultAddress?: boolean }) {
-	const router=useRouter();
+  const router = useRouter();
   const removeAddress = async (formData: FormData) => {
     const token = Cookies.get('customerAccessToken') as string;
     const id = formData.get('id') as string;
@@ -36,7 +36,7 @@ function AddressCard({ address, defaultAddress }: { address: MailingAddress; def
         ))}
       </ul>
 
-      <div className="mt-6 flex flex-row items-baseline font-medium justify-between">
+      <div className="mt-6 flex flex-row items-baseline justify-between font-medium">
         <Link
           href={`/account?${convertObjectToQueryString({
             modal: 'address-edit',

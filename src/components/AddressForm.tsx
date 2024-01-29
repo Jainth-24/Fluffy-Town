@@ -6,7 +6,7 @@ import { addAddress, updateAddress, updateDefaultAddress } from '@site/lib/shopi
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { Button } from './Button';
-import FormButton from '@site/pages/account/component/FormButton';
+import FormButton from '@site/components/FormButton';
 import { useRouter } from 'next/router';
 
 interface IAddressForm {
@@ -18,7 +18,7 @@ interface IAddressForm {
 let formError: string | null = null;
 
 function AddressForm({ isNewAddress, address, defaultAddress }: IAddressForm) {
-	const router = useRouter();
+  const router = useRouter();
   const handleSubmit = async (formData: FormData) => {
     formError = null;
 

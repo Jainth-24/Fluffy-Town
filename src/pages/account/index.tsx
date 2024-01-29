@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { FeaturedSection } from '@site/components/FeaturedSection';
 import { getFeaturedProducts, getFeaturedCollections, getCustomer } from '@site/lib/shopify';
-import OrderHistory from './component/OrderHistory';
+import OrderHistory from '../../components/OrderHistory';
 import AccountDetails from '../../components/AccountDetails';
-import AccountBook from './component/AccountBook';
+import AccountBook from '../../components/AccountBook';
 import Cookies from 'js-cookie';
 import { PageHeader } from '@site/components/Text';
 import { flattenConnection } from '@site/lib/flattenConnection';

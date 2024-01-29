@@ -12,11 +12,11 @@ function SignOutSection() {
   };
 
   return (
-    <div className="p-3 w-full">
+    <div className="w-full p-3">
       <Link href="/account" className="block px-4 py-2 text-left text-gray-800 hover:bg-gray-200">
         My Account
       </Link>
-      <button className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-200" onClick={handleSignOut}>
+      <button className="block w-full px-4 py-2 text-left text-gray-800 hover:bg-gray-200" onClick={handleSignOut}>
         Sign Out
       </button>
     </div>
@@ -28,13 +28,13 @@ function AccountLink({ className, isUser }: { className?: string; isUser: boolea
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   const handleDropdownToggle = () => {
-	if (!isUser) {
-		// If isUser is true, navigate to /account
-		router.push('/account');
-	  } else {
-		// If isUser is false, toggle the dropdown
-		setDropdownOpen(!isDropdownOpen);
-	  }
+    if (!isUser) {
+      // If isUser is true, navigate to /account
+      router.push('/account');
+    } else {
+      // If isUser is false, toggle the dropdown
+      setDropdownOpen(!isDropdownOpen);
+    }
   };
 
   return (
@@ -44,7 +44,7 @@ function AccountLink({ className, isUser }: { className?: string; isUser: boolea
       </div>
 
       {isUser && isDropdownOpen && (
-        <div className="absolute left-[-70px] mt-2 bg-white rounded-md shadow-md overflow-hidden w-40">
+        <div className="absolute left-[-70px] mt-2 w-40 overflow-hidden rounded-md bg-white shadow-md">
           <SignOutSection />
         </div>
       )}

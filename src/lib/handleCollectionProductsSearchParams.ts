@@ -1,5 +1,4 @@
-import { SortParam, AppliedFilter } from '@site/components/SortFilter';
-import { FiltersQueryParams } from '@site/pages/collections/[collectionHandle]';
+import { AppliedFilter, SortParam } from '@site/components/SortFilter';
 
 export const handleCollectionProductsSearchParams = (
 	params: Record<string, string>
@@ -14,7 +13,7 @@ export const handleCollectionProductsSearchParams = (
 	const knownFilters = ['productVendor', 'productType'];
 	const available = 'available';
 
-	const filters: FiltersQueryParams = [];
+	const filters: any = [];
 	const appliedFilters: AppliedFilter[] = [];
 
 	for (const [key, value] of Array.from(urlSearchParams.entries())) {

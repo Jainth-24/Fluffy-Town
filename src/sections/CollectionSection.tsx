@@ -31,7 +31,7 @@ const CollectionSection = () => {
               className="relative h-96 overflow-hidden rounded-md bg-gray-200"
               style={{ backgroundImage: `url(${item.imageUrl})`, backgroundSize: 'cover' }}
             >
-              <div className="absolute bottom-0 inset-x-0 bg-black bg-opacity-50 p-4 text-white">
+              <div className="absolute inset-x-0 bottom-0 bg-black bg-opacity-50 p-4 text-white">
                 <h3 className="text-center text-lg font-semibold">{item.title}</h3>
               </div>
             </div>

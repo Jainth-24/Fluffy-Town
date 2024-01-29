@@ -1,10 +1,10 @@
 import { getInputStyleClasses } from '@site/lib/utils';
-import FormHeader from '../component/FormHeader';
-import FormFooter from '../component/FormFooter';
-import FormButton from '../component/FormButton';
+import FormHeader from '../../../components/FormHeader';
+import FormFooter from '../../../components/FormFooter';
+import FormButton from '../../../components/FormButton';
 import { revalidatePath } from 'next/cache';
 import { recoverCustomersPassword } from '@site/lib/shopify';
-import AuthLayout from '../component/AuthLayout';
+import AuthLayout from '../../../components/AuthLayout';
 import { useRouter } from 'next/router';
 import { StoreLayout } from '@site/layouts/StoreLayout';
 
@@ -55,41 +55,41 @@ export default function RecoverPassword() {
   return (
     <StoreLayout>
       <AuthLayout>
-      <div className="text-center">
-        <FormHeader title={headings[isSubmitted ? 'submited' : 'default'].title} />
-        <p className="mt-4">{headings[isSubmitted ? 'submited' : 'default'].description}</p>
-        {!isSubmitted && (
-          <form action={handleSubmit} noValidate className="my-4 space-y-3 pb-8 pt-6">
-            <div>
-              <input
-                className={`w-full px-4 py-2 border rounded ${getInputStyleClasses(emailError)}`}
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                placeholder="Email address"
-                aria-label="Email address"
-                autoFocus
-              />
-              {emailError && <p className="text-xs text-red-500 mt-1">{emailError} &nbsp;</p>}
+        <div className="text-center">
+          <FormHeader title={headings[isSubmitted ? 'submited' : 'default'].title} />
+          <p className="mt-4">{headings[isSubmitted ? 'submited' : 'default'].description}</p>
+          {!isSubmitted && (
+            <form action={handleSubmit} noValidate className="my-4 space-y-3 pb-8 pt-6">
+              <div>
+                <input
+                  className={`w-full rounded border px-4 py-2 ${getInputStyleClasses(emailError)}`}
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  placeholder="Email address"
+                  aria-label="Email address"
+                  autoFocus
+                />
+                {emailError && <p className="mt-1 text-xs text-red-500">{emailError} &nbsp;</p>}
+              </div>
+              <FormButton btnText={'Request Reset Link'} />
+              <FormFooter page="recover" />
+            </form>
+          )}
+          {isSubmitted && (
+            <div className="mt-8">
+              <button
+                onClick={() => router.replace('/')} // Navigate to the home page
+                className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+              >
+                Go to Home
+              </button>
             </div>
-            <FormButton btnText={'Request Reset Link'} />
-            <FormFooter page="recover" />
-          </form>
-        )}
-        {isSubmitted && (
-          <div className="mt-8">
-            <button
-              onClick={() => router.replace('/')} // Navigate to the home page
-              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-            >
-              Go to Home
-            </button>
-          </div>
-        )}
-      </div>
-    </AuthLayout>
+          )}
+        </div>
+      </AuthLayout>
     </StoreLayout>
   );
 }
