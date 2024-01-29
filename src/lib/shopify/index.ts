@@ -60,7 +60,6 @@ import {
 } from './mutations/cart';
 import { getCartQuery } from './queries/cart';
 import { ARTICLE_QUERY, BLOGS_QUERY } from './queries/blog';
-import { FiltersQueryParams } from '@/app/collections/[collectionHandle]/page';
 import {
 	CUSTOMER_CREATE_MUTATION,
 	CUSTOMER_RECOVER_MUTATION,
@@ -78,6 +77,7 @@ import {
 import { CUSTOMER_UPDATE_MUTATION } from './mutations/customer';
 import { CUSTOMER_ORDER_QUERY } from './queries/orders';
 import { POLICIES_QUERY, POLICY_CONTENT_QUERY } from './queries/policies';
+import { FiltersQueryParams } from '@site/pages/collections/[collectionHandle]';
 
 const domain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN;
 const endpoint = `${domain}${SHOPIFY_GRAPHQL_API_ENDPOINT}`;

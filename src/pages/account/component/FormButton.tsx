@@ -1,4 +1,4 @@
-import cn from 'clsx';
+// @ts-ignore
 import { useFormStatus } from "react-dom";
 export default function FormButton({
   btnText,

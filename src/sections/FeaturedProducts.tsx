@@ -2,7 +2,7 @@ import { getFeaturedProducts } from '@site/lib/shopify';
 import React, { useEffect, useState } from 'react';
 
 const FeaturedProducts = () => {
-  const [featuredCollections, setFeaturedCollections] = useState([]);
+  const [featuredCollections, setFeaturedCollections] = useState<any>([]);
 
   useEffect(() => {
     const fetchFeaturedCollections = async () => {
@@ -22,7 +22,7 @@ const FeaturedProducts = () => {
     <div className="container mx-auto my-8">
       <h2 className="mb-4 text-2xl font-bold">Featured Products</h2>
       <div className="-mx-4 flex flex-wrap">
-        {featuredCollections.map((item) => (
+        {featuredCollections.map((item:any) => (
           <div key={item?.id} className="w-full p-4 md:w-1/3">
             <div className="relative h-96 overflow-hidden rounded-md bg-gray-200">
               <img

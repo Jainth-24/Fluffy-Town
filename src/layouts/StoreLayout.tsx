@@ -7,7 +7,7 @@ interface Props {
 }
 
 export function StoreLayout(props: Props) {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<any | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {

@@ -1,12 +1,9 @@
-import { redirect } from 'next/navigation';
 import FormHeader from '../component/FormHeader';
 import FormFooter from '../component/FormFooter';
 import FormButton from '../component/FormButton';
-import { revalidatePath } from 'next/cache';
 import Cookies from 'js-cookie';
 import AuthLayout from '../component/AuthLayout';
 import { loginCustomer } from '@site/lib/shopify';
-import { getInputStyleClasses } from '@site/lib/utils';
 import { useRouter } from 'next/router';
 import { StoreLayout } from '@site/layouts/StoreLayout';
 

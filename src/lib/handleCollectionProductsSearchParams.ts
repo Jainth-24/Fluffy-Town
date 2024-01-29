@@ -1,5 +1,5 @@
-import { FiltersQueryParams } from '@/app/collections/[collectionHandle]/page';
-import { AppliedFilter, SortParam } from '@/components/SortFilter';
+import { SortParam, AppliedFilter } from '@site/components/SortFilter';
+import { FiltersQueryParams } from '@site/pages/collections/[collectionHandle]';
 
 export const handleCollectionProductsSearchParams = (
 	params: Record<string, string>

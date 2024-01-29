@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FeaturedSection } from '@site/components/FeaturedSection';
 import { getFeaturedProducts, getFeaturedCollections, getCustomer } from '@site/lib/shopify';
-import SignOutSection from './component/SignOutSection';
 import OrderHistory from './component/OrderHistory';
 import AccountDetails from '../../components/AccountDetails';
 import AccountBook from './component/AccountBook';
@@ -17,11 +16,11 @@ import { StoreLayout } from '@site/layouts/StoreLayout';
 
 function AccountPage() {
   const router = useRouter();
-  const  searchParams  = router.query;
-  const [customer, setCustomer] = useState(null);
-  const [featuredProductsResponse, setFeaturedProductsResponse] = useState(null);
-  const [featuredCollectionsResponse, setFeaturedCollectionsResponse] = useState(null);
-  console.log(router.query);
+  const searchParams = router.query;
+  const [customer, setCustomer] = useState<any | null>(null);
+  const [featuredProductsResponse, setFeaturedProductsResponse] = useState<any | null>(null);
+  const [featuredCollectionsResponse, setFeaturedCollectionsResponse] = useState<any | null>(null);
+  console.log({ searchParams });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,14 +49,14 @@ function AccountPage() {
     return null;
   }
 
-  const { orders, firstName } = customer;
-  const welcomeMessage = firstName ? `Welcome, ${firstName}.` : `Welcome to your account.`;
-  const heading = customer ? welcomeMessage : 'Account Details';
+  const { orders } = customer;
   const customerOrders = flattenConnection(orders) as Order[];
   const addresses = flattenConnection(customer.addresses) as MailingAddress[];
   const address =
     (searchParams &&
+      typeof searchParams.id === 'string' && // Check if searchParams.id is a string
       addresses.find((res) => {
+        // @ts-ignore
         const editId = decodeURIComponent(searchParams?.id);
         const { id: editMailingId } = getIdFromURL(editId);
         const { id: mailingId } = getIdFromURL(res.id);
@@ -66,9 +65,8 @@ function AccountPage() {
     undefined;
 
   return (
-	<StoreLayout>
-		
-      <PageHeader className='my-1 text-center text-4xl font-semibold'>Account Details</PageHeader>
+    <StoreLayout>
+      <PageHeader className="my-1 text-center text-4xl font-semibold">Account Details</PageHeader>
       {customerOrders && <OrderHistory orders={customerOrders} />}
       <AccountDetails customer={customer} />
       <AccountBook addresses={addresses} customer={customer} />

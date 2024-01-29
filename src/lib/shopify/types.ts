@@ -1,6 +1,6 @@
-import { FiltersQueryParams } from '@/app/collections/[collectionHandle]/page';
-import { CollectionHero } from '@/components/Hero';
+import { CollectionHero } from '@site/components/Hero';
 import { LanguageCode } from '@shopify/hydrogen-react/storefront-api-types';
+import { FiltersQueryParams } from '@site/pages/collections/[collectionHandle]';
 
 export type Shop = {
 	id: string;

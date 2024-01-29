@@ -92,7 +92,7 @@ function AccountForm({ customer }: IAccountForm) {
 
   async function handleCleanError() {
     formError = null;
-    router.replace('/account/edit');
+    router.replace('/account');
     router.push('/account');
   }
 

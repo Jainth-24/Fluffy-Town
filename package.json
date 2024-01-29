@@ -3,7 +3,6 @@
   "description": "We believe that fashion should never compromise on comfort.",
   "repository": "https://github.com/Jainth-24/Fluffy-Town",
   "version": "0.0.1",
-
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -25,6 +24,7 @@
     "react-dom": "18.3.0-canary-3d9b20132-20240124",
     "react-hook-form": "^7.49.3",
     "react-icons": "^4.12.0",
+    "react-intersection-observer": "^9.5.3",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
     "type-fest": "^4.10.1",
