@@ -1,0 +1,112 @@
+{
+  "name": "next-shopify-storefront",
+  "description": "A Shopping Cart built with TypeScript, Tailwind CSS, Headless UI, Next.js, React.js, Shopify Hydrogen React,... and Shopify Storefront GraphQL API.",
+  "repository": "https://github.com/maxvien/next-shopify-storefront.git",
+  "version": "3.0.1",
+  "license": "MIT",
+  "author": {
+    "name": "Vien Dinh",
+    "email": "maxvien@gmail.com",
+    "url": "https://github.com/maxvien"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint && prettier --check src",
+    "fix": "next lint --fix && prettier --write src",
+    "codegen": "node codegen.mjs",
+    "predev": "npm run codegen",
+    "prebuild": "npm run codegen"
+  },
+  "dependencies": {
+    "@types/js-cookie": "^3.0.6",
+    "@types/react": "18.2.6",
+    "@types/react-dom": "18.2.4",
+    "graphql-request": "^6.1.0",
+    "js-cookie": "^3.0.5",
+    "next": "^13.5.6",
+    "react": "18.3.0-canary-3d9b20132-20240124",
+    "react-dom": "18.3.0-canary-3d9b20132-20240124",
+    "react-hook-form": "^7.49.3",
+    "react-icons": "^4.12.0",
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1",
+    "type-fest": "^4.10.1",
+    "typographic-base": "^1.0.4",
+    "zustand": "^4.5.0"
+  },
+  "devDependencies": {
+    "@headlessui/react": "^1.7.18",
+    "@heroicons/react": "^2.1.1",
+    "@maxvien/next": "^1.0.0",
+    "@maxvien/shopify": "^1.0.1",
+    "@shopify/hydrogen-react": "^2023.10.1",
+    "@types/lodash": "^4.14.202",
+    "@types/node": "^18.19.9",
+    "@types/react-slick": "^0.23.13",
+    "@types/title": "^3.4.3",
+    "autoprefixer": "^10.4.17",
+    "clsx": "^1.2.1",
+    "dotenv": "^16.4.1",
+    "eslint-config-next": "^13.5.6",
+    "eslint-config-prettier": "^8.10.0",
+    "eslint-plugin-tailwindcss": "^3.14.0",
+    "graphql-zeus": "^5.3.3",
+    "lodash": "^4.17.21",
+    "next-seo": "^6.4.0",
+    "nextjs-progressbar": "^0.0.16",
+    "postcss": "^8.4.33",
+    "prettier": "^2.8.8",
+    "react-use": "^17.5.0",
+    "tailwindcss": "^3.4.1",
+    "tiny-invariant": "^1.3.1",
+    "title": "^3.5.3",
+    "typescript": "4.9.5"
+  },
+  "eslintConfig": {
+    "extends": [
+      "next/core-web-vitals",
+      "plugin:tailwindcss/recommended",
+      "prettier"
+    ],
+    "rules": {
+      "no-unused-vars": "warn"
+    }
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "semi": true,
+    "printWidth": 120,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "postcss": {
+    "plugins": {
+      "tailwindcss": {},
+      "autoprefixer": {}
+    }
+  },
+  "keywords": [
+    "graphql",
+    "typescript",
+    "eslint",
+    "reactjs",
+    "nextjs",
+    "seo",
+    "storefront",
+    "prettier",
+    "shopify",
+    "server-side-rendering",
+    "shopify-storefronts",
+    "tailwindcss",
+    "shopify-storefront-api",
+    "graphql-codegen",
+    "headlessui",
+    "incremental-static-regeneration",
+    "shopify-hydrogen",
+    "graphql-zeus",
+    "typesafe-data-fetching",
+    "hydrogen-react"
+  ]
+}
