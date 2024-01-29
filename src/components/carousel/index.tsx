@@ -11,13 +11,10 @@ interface Collection {
 
 const Carousel: React.FC = () => {
   const [data, setData] = useState<Collection | null>(null);
-  const [homeData, setHomeData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const primaryHero = await getHomepageSeo();
-        setHomeData(primaryHero);
         const result = await getAllCollections({
           variables: {
             first: PAGE_BY,
@@ -31,7 +28,7 @@ const Carousel: React.FC = () => {
 
     fetchData();
   }, []);
-  const collectionData = data?.nodes;
+  const collectionData = data?.nodes as any[];
   const settings: Settings = {
     dots: true,
     infinite: true,
