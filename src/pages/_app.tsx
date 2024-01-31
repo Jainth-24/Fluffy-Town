@@ -4,8 +4,8 @@ import 'slick-carousel/slick/slick-theme.css';
 import ProgressBar from 'nextjs-progressbar';
 import { NextAppProps, DefaultSeo } from '@site/utilities/deps';
 import { ShopifyProvider, CartProvider } from '@shopify/hydrogen-react';
-
 import { storeDomain, publicStorefrontToken, storefrontApiVersion } from '@site/utilities/storefront';
+import { ThemeProvider } from '@material-tailwind/react';
 
 export default function App({ Component, pageProps }: NextAppProps) {
   return (
@@ -21,10 +21,12 @@ export default function App({ Component, pageProps }: NextAppProps) {
         titleTemplate="%s • Next Shopify Storefront"
         description="🛍 A Shopping Cart built with TypeScript, Tailwind CSS, Headless UI, Next.js, React.js, Shopify Hydrogen React,... and Shopify Storefront GraphQL API."
       />
+         <ThemeProvider>
       <CartProvider>
         <ProgressBar color="orange" />
         <Component {...pageProps} />
       </CartProvider>
+      </ThemeProvider>
     </ShopifyProvider>
   );
 }

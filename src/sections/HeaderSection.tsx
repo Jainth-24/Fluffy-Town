@@ -7,19 +7,9 @@ import Logo from '../../public/logo.png';
 import AccountLink from '@site/components/AccountLink';
 import Cookies from 'js-cookie';
 
-const mainMenuItems: { text: string; href: string }[] = [
-  {
-    text: 'Home',
-    href: '/',
-  },
-  {
-    text: 'Products',
-    href: '/products',
-  },
-];
 
 export function HeaderSection(props: any) {
-  const { menu, title } = props;
+  const { menu} = props;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const router = useRouter();
   const { totalQuantity } = useCart();
@@ -30,7 +20,7 @@ export function HeaderSection(props: any) {
     return pathname === href;
   }
   const token = Cookies.get('customerAccessToken') as string;
-
+  console.log({ menu });
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 0;
@@ -55,16 +45,38 @@ export function HeaderSection(props: any) {
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
           {menu.items.map((item: any) => (
-            <NextLink
-              className={clsx(
-                'text-sm font-semibold leading-6 text-gray-900',
-                isMenuItemActive(item.url) && 'text-primary-600'
+            <Popover key={item.id} className="relative">
+              {({ open }) => (
+                <>
+                  <NextLink
+                    className={clsx(
+                      'text-sm font-semibold leading-6 text-gray-900',
+                      isMenuItemActive(item.url) && 'text-primary-600'
+                    )}
+                    href={item.url}
+                  >
+                    {item.title}
+                  </NextLink>
+                  {item.items && (
+                    <Popover.Panel
+                      className={`${
+                        open ? 'block' : 'hidden'
+                      } absolute z-10 mt-3 w-48 space-y-2 divide-y divide-gray-100 rounded-md border border-gray-200 bg-white py-2 shadow-lg`}
+                    >
+                      {item.items.map((subItem: any) => (
+                        <NextLink
+                          key={subItem.id}
+                          href={subItem.url}
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          {subItem.title}
+                        </NextLink>
+                      ))}
+                    </Popover.Panel>
+                  )}
+                </>
               )}
-              key={item.id}
-              href={item.url}
-            >
-              {item.title}
-            </NextLink>
+            </Popover>
           ))}
         </Popover.Group>
 
@@ -113,16 +125,16 @@ export function HeaderSection(props: any) {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-                {mainMenuItems.map(({ text, href }) => (
+                {menu.items.map((item:any) => (
                   <NextLink
                     className={clsx(
                       '-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50',
-                      isMenuItemActive(href) && 'text-primary-600'
+                      isMenuItemActive(item.url) && 'text-primary-600'
                     )}
-                    key={href}
-                    href={href}
+                    key={item.id}
+                    href={item.url}
                   >
-                    {text}
+                    {item.title}
                   </NextLink>
                 ))}
               </div>

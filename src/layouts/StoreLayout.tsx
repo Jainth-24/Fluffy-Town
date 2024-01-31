@@ -1,6 +1,7 @@
 import { ReactNode, useEffect, useState } from '@site/utilities/deps';
 import { HeaderSection } from '@site/sections/HeaderSection';
 import { getLayoutData } from '@site/lib/shopify';
+import { ComplexNavbar } from '@site/sections/Navbar';
 
 interface Props {
   children: ReactNode;
@@ -25,8 +26,8 @@ export function StoreLayout(props: Props) {
   console.log({ data });
   return (
     <>
-      <HeaderSection menu={data.body.data.headerMenu} title={data.body.data.shop.name} />
-      <main className="mx-auto max-w-7xl p-6 lg:px-8 ">{props.children}</main>
+      <ComplexNavbar menu={data.body.data.headerMenu} title={data.body.data.shop.name} />
+      <main className="mx-auto max-w-7xl p-6 lg:px-8">{props.children}</main>
     </>
   );
 }

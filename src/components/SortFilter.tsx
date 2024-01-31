@@ -63,7 +63,8 @@ export function FiltersDrawer({
   appliedFilters: AppliedFilter[];
   collections: Collection[];
 }) {
-  const location = window.location || '';
+  const router = useRouter();
+  const location = router.asPath || '';
   const params = new URLSearchParams(location.search);
   const filterMarkup = (filter: Filter, option: Filter['values'][0]) => {
     if (filter.type === 'PRICE_RANGE') {
@@ -129,7 +130,8 @@ export function FiltersDrawer({
 }
 
 function AppliedFilters({ filters = [] }: { filters: AppliedFilter[] }) {
-  const location = window.location;
+  const router = useRouter();
+  const location = router.asPath;
   const params = new URLSearchParams(location.search);
   return (
     <>
@@ -190,9 +192,8 @@ function getFilterLink(
 const PRICE_RANGE_FILTER_DEBOUNCE = 500;
 
 function PriceRangeFilter({ max, min }: { max?: number; min?: number }) {
-  const location = window.location;
-  const params = useMemo(() => new URLSearchParams(location.search), [location.search]);
   const router = useRouter();
+  const params = new URLSearchParams(router.asPath.split('?')[1] || '');
 
   const [minPrice, setMinPrice] = useState(min ? String(min) : '');
   const [maxPrice, setMaxPrice] = useState(max ? String(max) : '');
