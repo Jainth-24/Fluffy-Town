@@ -48,7 +48,7 @@ function AddressCard({ address, defaultAddress }: { address: MailingAddress; def
         </Link>
         <form action={removeAddress}>
           <input type="hidden" name="id" value={address.id} />
-          <FormButton btnText="Remove" state="Removing" variant="outline" />
+          <FormButton btnText="Remove" variant="outline" />
         </form>
       </div>
     </div>

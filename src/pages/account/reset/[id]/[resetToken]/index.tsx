@@ -52,7 +52,7 @@ export default function ResetPassword({ params }: { params: { id: string; resetT
       }
 
       if (res.body.data.customerReset.customerUserErrors.length > 0) {
-        res.body.data.customerReset.customerUserErrors.forEach((error: any) => {
+        res.body.data.customerReset.customerUserErrors?.forEach((error: any) => {
           if (error.field) {
             if (error.field.includes('password')) {
               passwordError = error.message;

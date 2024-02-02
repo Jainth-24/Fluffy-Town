@@ -164,7 +164,7 @@ function AccountForm({ customer }: IAccountForm) {
             Passwords must be at least 8 characters.
           </Text>
           <div className="mt-6">
-            <FormButton state="Saving" btnText="Save" />
+            <FormButton btnText="Save" />
           </div>
           <div className="mb-4 mt-2">
             <Button to="/account" className="text-sm" variant="secondary" width="full">

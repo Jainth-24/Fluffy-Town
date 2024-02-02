@@ -10,6 +10,8 @@ import { StoreLayout } from '@site/layouts/StoreLayout';
 
 let emailError: string | null = null;
 let passwordError: string | null = null;
+let firstnameError: string | null = null;
+let lastNameError: string | null = null;
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -19,6 +21,8 @@ export default function RegisterPage() {
         input: {
           email: data.get('email') as string,
           password: data.get('password') as string,
+          firstName: data.get('firstname') as string,
+          lastName: data.get('lastName') as string,
         },
       },
     });
@@ -42,10 +46,10 @@ export default function RegisterPage() {
           path: '/',
           expires: new Date(Date.now() + 20 * 60 * 1000 + 5 * 1000),
         });
-        router.replace('/account');
+        router.push('/account');
       }
 
-      router.replace('/account/login');
+      router.push('/account/login');
     }
 
     if (res.body.data.customerCreate.customerUserErrors.length > 0) {
@@ -56,6 +60,12 @@ export default function RegisterPage() {
         if (error.field.includes('password')) {
           passwordError = error.message;
         }
+        if (error.field.includes('firstname')) {
+          firstnameError = error.message;
+        }
+        if (error.field.includes('lastName')) {
+          lastNameError = error.message;
+        }
       });
     }
 
@@ -65,8 +75,45 @@ export default function RegisterPage() {
   return (
     <StoreLayout>
       <AuthLayout>
-        <form action={handleSubmit} noValidate className="my-4 space-y-4 p-8 shadow-md">
+        <form action={handleSubmit} noValidate className="p-8 shadow-md">
           <FormHeader title="Create an Account" />
+
+          <div className="mb-4 mt-8">
+            <label htmlFor="firstname" className="block text-sm font-medium text-gray-700">
+              First Name
+            </label>
+            <input
+              className={`w-full rounded border px-4 py-2 focus:border-blue-500 focus:outline-none ${
+                firstnameError ? 'border-red-500' : 'border-gray-300'
+              }`}
+              id="firstname"
+              name="firstname"
+              type="text"
+              autoComplete="firstname"
+              required
+              placeholder="Enter your firstname"
+              aria-label="firstname"
+            />
+            {firstnameError && <p className="mt-1 text-xs text-red-500">{firstnameError}</p>}
+          </div>
+          <div className="mb-4">
+            <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
+              Last Name
+            </label>
+            <input
+              className={`w-full rounded border px-4 py-2 focus:border-blue-500 focus:outline-none ${
+                lastNameError ? 'border-red-500' : 'border-gray-300'
+              }`}
+              id="lastName"
+              name="lastName"
+              type="text"
+              autoComplete="lastName"
+              required
+              placeholder="Enter your last Name"
+              aria-label="lastName"
+            />
+            {lastNameError && <p className="mt-1 text-xs text-red-500">{lastNameError}</p>}
+          </div>
           <div className="mb-4">
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
               Email address

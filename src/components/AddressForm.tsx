@@ -265,7 +265,7 @@ function AddressForm({ isNewAddress, address, defaultAddress }: IAddressForm) {
           </label>
         </div>
         <div className="mt-8">
-          <FormButton state="Saving" btnText="Save" />
+          <FormButton btnText="Save" />
         </div>
         <div>
           <Button to="/account" className="focus:shadow-outline mt-2 w-full rounded" variant="secondary">

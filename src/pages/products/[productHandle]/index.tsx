@@ -144,7 +144,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params, query }) 
   const searchParams = query as Record<string, string>;
 
   const selectedOptions: Record<string, string>[] = [];
-  new URLSearchParams(searchParams).forEach((value, name) => {
+  new URLSearchParams(searchParams)?.forEach((value, name) => {
     selectedOptions.push({ name, value });
   });
 

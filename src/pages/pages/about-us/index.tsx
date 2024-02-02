@@ -17,8 +17,9 @@ const About = () => {
         // Handle error appropriately
       }
     };
-
-    fetchData();
+    if (slug) {
+      fetchData();
+    }
   }, []);
 
   const page = pageData?.page?.pageByHandle;

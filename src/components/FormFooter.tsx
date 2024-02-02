@@ -28,7 +28,7 @@ export default function FormFooter({ page }: IFormFooter) {
       <p className="mt-6 align-baseline text-sm">
         {data[page]?.phrase}
         &nbsp;
-        <Link className="inline underline" href={data[page]?.href}>
+        <Link className="inline underline text-blue-500" href={data[page]?.href}>
           {data[page]?.linkText}
         </Link>
       </p>
