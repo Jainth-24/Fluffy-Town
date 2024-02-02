@@ -84,7 +84,7 @@ export default function Header(props: any) {
             </Dropdown>
           </>
         ) : (
-          <Button gradientMonochrome="success">Login</Button>
+          <Button gradientMonochrome="success" href='/account'>Login</Button>
         )}
         <NavbarToggle />
       </div>
