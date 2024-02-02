@@ -1,5 +1,4 @@
 const colors = require('tailwindcss/colors');
-const withMT = require("@material-tailwind/react/utils/withMT");
 /** @type {import('tailwindcss').Config} */
 function withOpacity(variableName) {
   return ({ opacityValue }) => {
@@ -11,7 +10,7 @@ function withOpacity(variableName) {
 }
 
 /** @type {import('tailwindcss').Config} */
-module.exports = withMT({
+module.exports = ({
   content: ['./src/**/*.{js,ts,jsx,tsx}', './src/components/carousel/*.{tsx,ts,jsx,js}'],
   theme: {
     extend: {

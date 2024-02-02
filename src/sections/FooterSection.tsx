@@ -3,8 +3,7 @@ import React from 'react';
 
 const FooterSection = (props: any) => {
   const { menu, shop } = props;
-  console.log({ menu });
-  console.log({ shop });
+
   return (
     <footer
       style={{ backgroundColor: 'rgba(254, 221, 0, 1)' }}
