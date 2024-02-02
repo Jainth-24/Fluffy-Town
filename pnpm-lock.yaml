@@ -35,6 +35,9 @@ dependencies:
   react-dom:
     specifier: 18.3.0-canary-3d9b20132-20240124
     version: 18.3.0-canary-3d9b20132-20240124(react@18.3.0-canary-3d9b20132-20240124)
+  react-helmet:
+    specifier: ^6.1.0
+    version: 6.1.0(react@18.3.0-canary-3d9b20132-20240124)
   react-hook-form:
     specifier: ^7.50.0
     version: 7.50.0(react@18.3.0-canary-3d9b20132-20240124)
@@ -85,6 +88,9 @@ devDependencies:
   '@types/node':
     specifier: ^18.19.14
     version: 18.19.14
+  '@types/react-helmet':
+    specifier: ^6.1.11
+    version: 6.1.11
   '@types/react-slick':
     specifier: ^0.23.13
     version: 0.23.13
@@ -1336,6 +1342,12 @@ packages:
     dependencies:
       '@types/react': 18.2.6
     dev: false
+
+  /@types/react-helmet@6.1.11:
+    resolution: {integrity: sha512-0QcdGLddTERotCXo3VFlUSWO3ztraw8nZ6e3zJSgG7apwV5xt+pJUS8ewPBqT4NYB1optGLprNQzFleIY84u/g==}
+    dependencies:
+      '@types/react': 18.2.6
+    dev: true
 
   /@types/react-slick@0.23.13:
     resolution: {integrity: sha512-bNZfDhe/L8t5OQzIyhrRhBr/61pfBcWaYJoq6UDqFtv5LMwfg4NsVDD2J8N01JqdAdxLjOt66OZEp6PX+dGs/A==}
@@ -5280,7 +5292,6 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       react-is: 16.13.1
-    dev: true
 
   /property-information@6.4.1:
     resolution: {integrity: sha512-OHYtXfu5aI2sS2LWFSN5rgJjrQ4pCy8i1jubJLe2QvMF8JJ++HXTUIVWFLfXJoaOfvYYjk2SN8J2wFUWIGXT4w==}
@@ -5356,6 +5367,22 @@ packages:
       react: 18.3.0-canary-3d9b20132-20240124
       scheduler: 0.24.0-canary-3d9b20132-20240124
 
+  /react-fast-compare@3.2.2:
+    resolution: {integrity: sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ==}
+    dev: false
+
+  /react-helmet@6.1.0(react@18.3.0-canary-3d9b20132-20240124):
+    resolution: {integrity: sha512-4uMzEY9nlDlgxr61NL3XbKRy1hEkXmKNXhjbAIOVw5vcFrsdYbH2FEwcNyWvWinl103nXgzYNlns9ca+8kFiWw==}
+    peerDependencies:
+      react: '>=16.3.0'
+    dependencies:
+      object-assign: 4.1.1
+      prop-types: 15.8.1
+      react: 18.3.0-canary-3d9b20132-20240124
+      react-fast-compare: 3.2.2
+      react-side-effect: 2.1.2(react@18.3.0-canary-3d9b20132-20240124)
+    dev: false
+
   /react-hook-form@7.50.0(react@18.3.0-canary-3d9b20132-20240124):
     resolution: {integrity: sha512-AOhuzM3RdP09ZCnq+Z0yvKGHK25yiOX5phwxjV9L7U6HMla10ezkBnvQ+Pk4GTuDfsC5P2zza3k8mawFwFLVuQ==}
     engines: {node: '>=12.22.0'}
@@ -5402,7 +5429,6 @@ packages:
 
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
-    dev: true
 
   /react-markdown@9.0.1(@types/react@18.2.6)(react@18.3.0-canary-3d9b20132-20240124):
     resolution: {integrity: sha512-186Gw/vF1uRkydbsOIkcGXw7aHq0sZOCRFFjGrr7b9+nVZg4UfA4enXCaxm4fUzecU38sWfrNDitGhshuU7rdg==}
@@ -5424,6 +5450,14 @@ packages:
       vfile: 6.0.1
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /react-side-effect@2.1.2(react@18.3.0-canary-3d9b20132-20240124):
+    resolution: {integrity: sha512-PVjOcvVOyIILrYoyGEpDN3vmYNLdy1CajSFNt4TDsVQC5KpTijDvWVoR+/7Rz2xT978D8/ZtFceXxzsPwZEDvw==}
+    peerDependencies:
+      react: ^16.3.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.3.0-canary-3d9b20132-20240124
     dev: false
 
   /react-slick@0.29.0(react-dom@18.3.0-canary-3d9b20132-20240124)(react@18.3.0-canary-3d9b20132-20240124):

@@ -5,6 +5,7 @@ import ProgressBar from 'nextjs-progressbar';
 import { NextAppProps, DefaultSeo } from '@site/utilities/deps';
 import { ShopifyProvider, CartProvider } from '@shopify/hydrogen-react';
 import { storeDomain, publicStorefrontToken, storefrontApiVersion } from '@site/utilities/storefront';
+import CrispChatbot from '@site/components/CrispChatbot';
 
 export default function App({ Component, pageProps }: NextAppProps) {
   return (
@@ -23,6 +24,7 @@ export default function App({ Component, pageProps }: NextAppProps) {
 
       <CartProvider>
         <ProgressBar color="orange" />
+        <CrispChatbot />
           <Component {...pageProps} />
       </CartProvider>
     </ShopifyProvider>
