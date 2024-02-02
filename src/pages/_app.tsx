@@ -21,11 +21,11 @@ export default function App({ Component, pageProps }: NextAppProps) {
         titleTemplate="%s • Next Shopify Storefront"
         description="🛍 A Shopping Cart built with TypeScript, Tailwind CSS, Headless UI, Next.js, React.js, Shopify Hydrogen React,... and Shopify Storefront GraphQL API."
       />
-         <ThemeProvider>
-      <CartProvider>
-        <ProgressBar color="orange" />
-        <Component {...pageProps} />
-      </CartProvider>
+      <ThemeProvider>
+        <CartProvider>
+          <ProgressBar color="orange" />
+          <Component {...pageProps} />
+        </CartProvider>
       </ThemeProvider>
     </ShopifyProvider>
   );

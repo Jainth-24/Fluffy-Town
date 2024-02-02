@@ -28,11 +28,12 @@ const Carousel: React.FC = () => {
 
     fetchData();
   }, []);
-  const collectionData = data?.nodes as any[];
+  console.log(data?.nodes);
+  const collectionData = ((data?.nodes as any[]) || []).filter((slideContent) => slideContent.metafield !== null);
   const settings: Settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 600,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,

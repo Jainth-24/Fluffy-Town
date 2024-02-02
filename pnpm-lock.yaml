@@ -76,6 +76,9 @@ devDependencies:
   '@types/lodash':
     specifier: ^4.14.202
     version: 4.14.202
+  '@types/next':
+    specifier: ^9.0.0
+    version: 9.0.0(react-dom@18.3.0-canary-3d9b20132-20240124)(react@18.3.0-canary-3d9b20132-20240124)
   '@types/node':
     specifier: ^18.19.10
     version: 18.19.10
@@ -605,6 +608,20 @@ packages:
 
   /@types/lodash@4.14.202:
     resolution: {integrity: sha512-OvlIYQK9tNneDlS0VN54LLd5uiPCBOp7gS5Z0f1mjoJYBrtStzgmJBxONW3U6OZqdtNzZPmn9BS/7WI7BFFcFQ==}
+    dev: true
+
+  /@types/next@9.0.0(react-dom@18.3.0-canary-3d9b20132-20240124)(react@18.3.0-canary-3d9b20132-20240124):
+    resolution: {integrity: sha512-gnBXM8rP1mnCgT1uE2z8SnpFTKRWReJlhbZLZkOLq/CH1ifvTNwjIVtXvsywTy1dwVklf+y/MB0Eh6FOa94yrg==}
+    deprecated: This is a stub types definition. next provides its own type definitions, so you do not need this installed.
+    dependencies:
+      next: 13.5.6(react-dom@18.3.0-canary-3d9b20132-20240124)(react@18.3.0-canary-3d9b20132-20240124)
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@opentelemetry/api'
+      - babel-plugin-macros
+      - react
+      - react-dom
+      - sass
     dev: true
 
   /@types/node@18.19.10:

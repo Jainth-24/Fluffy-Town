@@ -7,9 +7,8 @@ import Logo from '../../public/logo.png';
 import AccountLink from '@site/components/AccountLink';
 import Cookies from 'js-cookie';
 
-
 export function HeaderSection(props: any) {
-  const { menu} = props;
+  const { menu } = props;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const router = useRouter();
   const { totalQuantity } = useCart();
@@ -125,7 +124,7 @@ export function HeaderSection(props: any) {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-                {menu.items.map((item:any) => (
+                {menu.items.map((item: any) => (
                   <NextLink
                     className={clsx(
                       '-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50',

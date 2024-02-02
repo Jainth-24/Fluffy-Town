@@ -26,7 +26,18 @@ export const COLLECTIONS_QUERY = `#graphql
           height
           altText
         }
-        
+        metafield(namespace: "custom", key: "hero_image") {
+            id
+            namespace
+            reference {
+              ... on MediaImage {
+                image {
+                  originalSrc
+                }
+              }
+            }
+            value
+        }
       }
       pageInfo {
         hasPreviousPage

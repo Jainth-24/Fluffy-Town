@@ -1,17 +1,15 @@
-// Import necessary modules and components
+'use client';
 import { Product } from '@site/lib/shopify/types';
 import { Grid } from './Grid';
 import { ProductCard } from './ProductCard';
 import { useEffect, useState } from 'react';
 import { Button } from './Button';
 import { useInView } from 'react-intersection-observer';
-import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation';
 import { handleCollectionProductsSearchParams } from '@site/lib/handleCollectionProductsSearchParams';
 import { Link } from './Link';
-import { useSearchParams } from 'next/navigation';
 
-export default function ProductGrid({ handle }: { handle: string }) {
-  const router = useRouter();
+export default function ProductGrid({ ...props }: { handle: string }) {
   const [cursor, setCursor] = useState<string | null | undefined>(undefined);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [hasNextPage, setHasNextPage] = useState<boolean>(false);
@@ -32,7 +30,7 @@ export default function ProductGrid({ handle }: { handle: string }) {
       if (reverse) {
         apiSearchParams.set('reverse', reverse.toString());
       }
-      apiSearchParams.set('handle', handle);
+      apiSearchParams.set('handle', props.handle);
       if (cursor) apiSearchParams.set('cursor', cursor);
       setIsLoading(true);
       fetch(`/api/collectionProducts?${apiSearchParams.toString()}`).then((res) => {
@@ -44,7 +42,8 @@ export default function ProductGrid({ handle }: { handle: string }) {
         });
       });
     }
-  }, [inView, hasNextPage, isLoading, searchParams, handle]);
+  }, [inView, hasNextPage, isLoading, searchParams, props.handle]);
+
   useEffect(() => {
     setProducts([]);
     setHasNextPage(false);
@@ -60,7 +59,7 @@ export default function ProductGrid({ handle }: { handle: string }) {
     if (reverse) {
       apiSearchParams.set('reverse', reverse.toString());
     }
-    apiSearchParams.set('handle', handle);
+    apiSearchParams.set('handle', props.handle);
     setIsLoading(true);
     fetch(`/api/collectionProducts?${apiSearchParams.toString()}`).then((res) => {
       res.json().then((data) => {
@@ -70,7 +69,7 @@ export default function ProductGrid({ handle }: { handle: string }) {
         setIsLoading(false);
       });
     });
-  }, [handle, searchParams]);
+  }, [props.handle, searchParams]);
 
   const haveProducts = products.length > 0;
 
@@ -87,7 +86,7 @@ export default function ProductGrid({ handle }: { handle: string }) {
 
   return (
     <>
-      <Grid layout="products" handle={handle}>
+      <Grid layout="products" {...props}>
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

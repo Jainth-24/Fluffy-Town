@@ -39,6 +39,7 @@
     "@maxvien/shopify": "^1.0.1",
     "@shopify/hydrogen-react": "^2023.10.1",
     "@types/lodash": "^4.14.202",
+    "@types/next": "^9.0.0",
     "@types/node": "^18.19.10",
     "@types/react-slick": "^0.23.13",
     "@types/title": "^3.4.3",

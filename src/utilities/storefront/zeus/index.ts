@@ -3667,9 +3667,9 @@ Buyer identity should match the customer's shipping address.
     cartDiscountCodesUpdate?: [
       {
         /** The ID of the cart. */
-        cartId: string | Variable<any, string>
+        cartId: string | Variable<any, string>;
         /** The case-insensitive discount codes that the customer added at checkout.
-         */;
+         */
         discountCodes?: Array<string> | undefined | null | Variable<any, string>;
       },
       ValueTypes['CartDiscountCodesUpdatePayload']
@@ -8362,9 +8362,9 @@ Buyer identity should match the customer's shipping address.
     cartDiscountCodesUpdate?: [
       {
         /** The ID of the cart. */
-        cartId: string
+        cartId: string;
         /** The case-insensitive discount codes that the customer added at checkout.
-         */;
+         */
         discountCodes?: Array<string> | undefined | null;
       },
       ResolverInputTypes['CartDiscountCodesUpdatePayload']

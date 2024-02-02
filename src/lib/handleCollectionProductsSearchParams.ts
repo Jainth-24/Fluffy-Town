@@ -1,16 +1,15 @@
 import { AppliedFilter, SortParam } from '@site/components/SortFilter';
 
-import { NextRouter, useRouter } from 'next/router';
+export const handleCollectionProductsSearchParams = (params: Record<string, string>) => {
+  const urlSearchParams = new URLSearchParams(params);
 
-export const handleCollectionProductsSearchParams = (router: NextRouter) => {
-	const urlSearchParams = new URLSearchParams(router.query);
   const variantOption = 'variantOption';
   const { sortKey, reverse } = getSortValuesFromParam(urlSearchParams.get('sort') as SortParam);
   const cursor = urlSearchParams.get('cursor');
   const knownFilters = ['productVendor', 'productType'];
   const available = 'available';
 
-  const filters: any[] = [];
+  const filters: any = [];
   const appliedFilters: AppliedFilter[] = [];
 
   for (const [key, value] of Array.from(urlSearchParams.entries())) {

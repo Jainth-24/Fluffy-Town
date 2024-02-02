@@ -6,7 +6,7 @@ import { IconCaret, IconFilters, IconXMark } from './Icon';
 import { Heading, Text } from './Text';
 import { Link } from './Link';
 import { Filter, Collection, FilterType } from '@site/lib/shopify/types';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import clsx from 'clsx';
 
 export type AppliedFilter = {
@@ -63,9 +63,9 @@ export function FiltersDrawer({
   appliedFilters: AppliedFilter[];
   collections: Collection[];
 }) {
-  const router = useRouter();
-  const location = router.asPath || '';
-  const params = new URLSearchParams(location.search);
+  const pathname = usePathname();
+  const location = pathname || '';
+  const params = new URLSearchParams(location);
   const filterMarkup = (filter: Filter, option: Filter['values'][0]) => {
     if (filter.type === 'PRICE_RANGE') {
       const min =
@@ -130,9 +130,9 @@ export function FiltersDrawer({
 }
 
 function AppliedFilters({ filters = [] }: { filters: AppliedFilter[] }) {
-  const router = useRouter();
-  const location = router.asPath;
-  const params = new URLSearchParams(location.search);
+  const pathname = usePathname();
+  const location = pathname;
+  const params = new URLSearchParams(location);
   return (
     <>
       <Heading as="h4" size="lead" className="pb-4">
@@ -158,7 +158,7 @@ function AppliedFilters({ filters = [] }: { filters: AppliedFilter[] }) {
   );
 }
 
-function getAppliedFilterLink(filter: AppliedFilter, params: URLSearchParams, location: Location) {
+function getAppliedFilterLink(filter: AppliedFilter, params: URLSearchParams, location: string) {
   const paramsClone = new URLSearchParams(params);
   if (filter.urlParam.key === 'variantOption') {
     const variantOptions = paramsClone.getAll('variantOption');
@@ -170,7 +170,7 @@ function getAppliedFilterLink(filter: AppliedFilter, params: URLSearchParams, lo
   } else {
     paramsClone.delete(filter.urlParam.key);
   }
-  return `${location.pathname}?${paramsClone.toString()}`;
+  return `${location}?${paramsClone.toString()}`;
 }
 
 function getSortLink(sort: SortParam, params: URLSearchParams, location: Location) {
@@ -182,18 +182,19 @@ function getFilterLink(
   filter: Filter,
   rawInput: string | Record<string, any>,
   params: URLSearchParams,
-  location: Location
+  location: string
 ) {
   const paramsClone = new URLSearchParams(params);
   const newParams = filterInputToParams(filter.type, rawInput, paramsClone);
-  return `${location.pathname}?${newParams.toString()}`;
+  return `${location}?${newParams.toString()}`;
 }
 
 const PRICE_RANGE_FILTER_DEBOUNCE = 500;
 
 function PriceRangeFilter({ max, min }: { max?: number; min?: number }) {
+  const pathname = usePathname();
   const router = useRouter();
-  const params = new URLSearchParams(router.asPath.split('?')[1] || '');
+  const params = new URLSearchParams(pathname.split('?')[1] || '');
 
   const [minPrice, setMinPrice] = useState(min ? String(min) : '');
   const [maxPrice, setMaxPrice] = useState(max ? String(max) : '');
@@ -207,7 +208,7 @@ function PriceRangeFilter({ max, min }: { max?: number; min?: number }) {
       if (maxPrice !== '') price.max = maxPrice;
 
       const newParams = filterInputToParams('PRICE_RANGE', { price }, params);
-      router.push(`${location.pathname}?${newParams.toString()}`);
+      router.push(`${location}?${newParams.toString()}`);
     },
     PRICE_RANGE_FILTER_DEBOUNCE,
     [minPrice, maxPrice]

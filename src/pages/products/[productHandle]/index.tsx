@@ -1,25 +1,32 @@
-import React from 'react';
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
-import { getProduct, getProductRecommendations } from '@site/lib/shopify';
-import { getExcerpt } from '@site/lib/utils';
-import { truncate } from '@site/lib/truncate';
-import { Product, ProductVariant, ShopType } from '@site/lib/shopify/types';
 import ProductGallery from '@site/components/ProductGallery';
+import { ProductSwimlane } from '@site/components/ProductSwimlane';
 import { Heading, Section, Text } from '@site/components/Text';
 import ProductDetail from '../components/ProductDetails';
+import { getExcerpt } from '@site/lib/utils';
+import { truncate } from '@site/lib/truncate';
+import { getProduct, getProductRecommendations } from '@site/lib/shopify';
 import ProductForm from './components/ProductForm';
-import { ProductSwimlane } from '@site/components/ProductSwimlane';
-import { GetServerSideProps } from 'next';
+import { Product, ProductVariant, ShopType } from '@site/lib/shopify/types';
+import { StoreLayout } from '@site/layouts/StoreLayout';
 
-const Product = ({ search, shop, product }: any) => {
+interface ProductPageProps {
+  product: Product & { selectedVariant: ProductVariant };
+  shop: ShopType;
+  relatedProducts: Product[];
+  searchParams: any;
+}
+
+const ProductPage: React.FC<ProductPageProps> = ({ product, shop, relatedProducts, searchParams }) => {
+  const { media, title, vendor, descriptionHtml, id } = product;
+  const { shippingPolicy, refundPolicy } = shop;
+
+  const selectedVariant = product.selectedVariant ?? product.variants.nodes[0];
+  const search = new URLSearchParams(searchParams);
   const url = `/products/${product.handle}`;
-  const STORE_DOMAIN = `${process.env.PUBLIC_STORE_DOMAIN!}`;
-
-  const firstVariant = product.variants.nodes[0];
-  const selectedVariant = product.selectedVariant ?? firstVariant;
-
   const description = truncate(product?.seo?.description ?? product?.description ?? '');
-
+  const STORE_DOMAIN = `${process.env.PUBLIC_STORE_DOMAIN!}`;
   const variants = product.variants.nodes;
   const offers: any[] = (variants || []).map((variant: any) => {
     for (const option of variant.selectedOptions) {
@@ -36,7 +43,6 @@ const Product = ({ search, shop, product }: any) => {
       url,
     };
   });
-
   const seo = {
     openGraph: {
       title: product?.seo?.title ?? product?.title,
@@ -83,11 +89,8 @@ const Product = ({ search, shop, product }: any) => {
     ],
   };
 
-  const { media, title, vendor, descriptionHtml, id } = product;
-  const { shippingPolicy, refundPolicy } = shop;
-
   return (
-    <>
+    <StoreLayout>
       <Head>
         <title>{seo.title}</title>
         <meta name="description" content={seo.description} />
@@ -99,15 +102,15 @@ const Product = ({ search, shop, product }: any) => {
         <script type="application/ld+json">{JSON.stringify(seo.jsonLd)}</script>
       </Head>
       <Section className="px-0 md:px-8 lg:px-12">
-        <div className="grid items-start md:gap-6 lg:gap-20 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid items-start md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-20">
           <ProductGallery media={media.nodes} className="w-full lg:col-span-2" />
-          <div className="sticky md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll">
-            <section className="flex flex-col w-full max-w-xl gap-8 p-6 md:mx-auto md:max-w-sm md:px-0">
+          <div className="md:-mb-nav md:top-nav md:-translate-y-nav md:pt-nav hiddenScroll sticky md:h-screen md:overflow-y-scroll">
+            <section className="flex w-full max-w-xl flex-col gap-8 p-6 md:mx-auto md:max-w-sm md:px-0">
               <div className="grid gap-2">
                 <Heading as="h1" className="whitespace-normal">
                   {title}
                 </Heading>
-                {vendor && <Text className={'opacity-50 font-medium'}>{vendor}</Text>}
+                {vendor && <Text className={'font-medium opacity-50'}>{vendor}</Text>}
               </div>
               {product && <ProductForm product={product} />}
               <div className="grid gap-4 py-4">
@@ -131,30 +134,31 @@ const Product = ({ search, shop, product }: any) => {
           </div>
         </div>
       </Section>
-      {/* {relatedProducts && <ProductSwimlane title="Related Products" products={relatedProducts} />} */}
-    </>
+      {relatedProducts && <ProductSwimlane title="Related Products" products={relatedProducts} />}
+    </StoreLayout>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ params, query }: any) => {
-  const searchParams = query;
-  const search = new URLSearchParams(searchParams);
+export const getServerSideProps: GetServerSideProps = async ({ params, query }) => {
+  const { productHandle } = params!;
+  const searchParams = query as Record<string, string>;
 
   const selectedOptions: Record<string, string>[] = [];
-  search.forEach((value, name) => {
+  new URLSearchParams(searchParams).forEach((value, name) => {
     selectedOptions.push({ name, value });
   });
-  console.log({selectedOptions})
-  const {
-    shop,
-    product,
-  }: {
-    shop: ShopType;
-    product: Product & { selectedVariant: ProductVariant };
-  } = await getProduct(params.productHandle, selectedOptions);
+
+  const { shop, product } = await getProduct(productHandle as string, selectedOptions);
+  const relatedProducts = await getProductRecommendations(product.id);
+
   return {
-    props: { search, shop, product },
+    props: {
+      product,
+      shop,
+      relatedProducts,
+      searchParams,
+    },
   };
 };
 
-export default Product;
+export default ProductPage;
