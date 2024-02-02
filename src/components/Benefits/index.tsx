@@ -10,7 +10,7 @@ const Benefits = () => {
       {benefitContent.map((benefitItem) => {
         return (
           <div className="col-span-6 flex flex-col items-center lg:col-span-3 " key={benefitItem.title}>
-            <Image height={48} width={48} src={benefitItem.imgSrc} alt={benefitItem.title} className="" />
+            <Image height={58} width={58} src={benefitItem.imgSrc} alt={benefitItem.title} className="bg-yellow-200 p-2 rounded-full" />
             <p className="py-2 text-center text-sm text-palette-base/90 md:text-base">{t[`${benefitItem.title}`]}</p>
           </div>
         );

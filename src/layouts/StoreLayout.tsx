@@ -1,5 +1,4 @@
 import { ReactNode, useEffect, useState } from '@site/utilities/deps';
-import { HeaderSection } from '@site/sections/HeaderSection';
 import { getLayoutData } from '@site/lib/shopify';
 import Header from '@site/sections/Navbar';
 import FooterSection from '@site/sections/Footer';

@@ -1,5 +1,6 @@
 import { getFeaturedProducts } from '@site/lib/shopify';
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 const FeaturedProducts = () => {
   const [featuredCollections, setFeaturedCollections] = useState<any>([]);
@@ -25,10 +26,12 @@ const FeaturedProducts = () => {
         {featuredCollections.map((item: any) => (
           <div key={item?.id} className="w-full p-4 md:w-1/3">
             <div className="relative h-96 overflow-hidden rounded-md bg-gray-200">
-              <img
+              <Image
                 src={item?.variants?.nodes[0].image?.url}
                 alt={item.title}
-                className="size-full object-cover transition-transform hover:scale-105"
+                layout="fill"
+                objectFit="cover"
+                className="size-full transition-transform hover:scale-105"
               />
               <div className="absolute inset-x-0 bottom-0 bg-black bg-opacity-50 p-4 text-white">
                 <h3 className="text-center text-lg font-semibold">{item.title}</h3>

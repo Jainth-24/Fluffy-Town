@@ -45,14 +45,14 @@ export default function Header(props: any) {
 
   console.log(router.pathname);
   return (
-    <Navbar className="border-b-8 border-b-yellow-200">
+    <Navbar className="border-b-8 border-b-yellow-200 sticky top-0 z-50 bg-white">
       <NavbarBrand href={shop.primaryDomain.url} className="ml-5">
         <Image
           width={50}
           height={100}
           src={shop.brand.logo.image.url}
           className="mr-3 max-md:h-10 sm:h-9 lg:h-12"
-          alt="Flowbite React Logo"
+          alt="Profile Logo"
         />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">{shop.name}</span>
       </NavbarBrand>
@@ -65,7 +65,7 @@ export default function Header(props: any) {
               label={
                 <Avatar
                   alt="User settings"
-                  img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmvQC3LHKi9a9CSMiGjh5V92IMXHI_t8wpYa7mEW4ADw&s"
+                  img="https://cdn.icon-icons.com/icons2/2622/PNG/512/gui_user_settings_icon_158346.png"
                   rounded
                 />
               }
@@ -98,7 +98,10 @@ export default function Header(props: any) {
             <NavbarLink key={item.id}>
               <Dropdown label={item.title} inline>
                 {item.items.map((subitem:any) => (
+                  <>
                   <Dropdown.Item key={subitem.id} href={subitem.url}>{subitem.title}</Dropdown.Item>
+                  <Dropdown.Divider />
+                  </>
                 ))}
               </Dropdown>
             </NavbarLink>
