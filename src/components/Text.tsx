@@ -169,9 +169,9 @@ export function PageHeader({
   [key: string]: any;
 }) {
   const variants: Record<string, string> = {
-    default: 'grid w-full gap-8 justify-items-start',
+    default: 'grid w-full gap-8 justify-center',
     blogPost: 'grid md:text-center w-full gap-4 p-6 py-8 md:p-8 lg:p-12 md:justify-items-center',
-    allCollections: 'flex justify-between items-baseline gap-8 p-6 md:p-8 lg:p-12',
+    allCollections: 'flex justify-center items-center gap-8 p-6 md:p-8 lg:p-12 text-center',
   };
 
   const styles = clsx(variants[variant], className);
@@ -179,7 +179,7 @@ export function PageHeader({
   return (
     <header {...props} className={styles}>
       {heading && (
-        <Heading as="h1" width="narrow" size="heading" className="inline-block">
+        <Heading as="h1" width="narrow" size="heading" className="text-center text-4xl">
           {heading}
         </Heading>
       )}

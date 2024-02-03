@@ -16,6 +16,11 @@ import Cookies from 'js-cookie';
 import { getCustomer } from '@site/lib/shopify';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import useAppStore from '@site/store/app-store';
+import { Drawer } from '@site/components/Drawer';
+import { Cart } from '@site/components/Cart';
+import CartCount from './CartCount';
+import { usePathname } from 'next/navigation';
 
 export default function Header(props: any) {
   const { shop, menu } = props;
@@ -26,6 +31,8 @@ export default function Header(props: any) {
     Cookies.remove('customerAccessToken');
     router.push('/account/login');
   };
+  const pathname = usePathname();
+	const isHome = pathname === '/';
 
   // Fetch customer data if there is a valid access token in the cookie
   useEffect(() => {
@@ -46,7 +53,8 @@ export default function Header(props: any) {
   console.log(router.pathname);
   return (
     <Navbar className="border-b-8 border-b-yellow-200 sticky top-0 z-50 bg-white">
-      <NavbarBrand href={shop.primaryDomain.url} className="ml-5">
+        <CartDrawer />
+      <NavbarBrand href={shop.primaryDomain.url}>
         <Image
           width={50}
           height={100}
@@ -56,7 +64,9 @@ export default function Header(props: any) {
         />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">{shop.name}</span>
       </NavbarBrand>
-      <div className="mr-5 flex md:order-2">
+      <div className="mr-2 flex md:order-2">
+      <NavbarToggle className='mx-2' />
+      <CartCount isHome={isHome} />
         {customerData ? (
           <>
             <Dropdown
@@ -86,7 +96,8 @@ export default function Header(props: any) {
         ) : (
           <Button gradientMonochrome="success" href='/account'>Login</Button>
         )}
-        <NavbarToggle />
+       
+ 
       </div>
       <NavbarCollapse>
         {menu.items.map((item:any) =>
@@ -110,4 +121,19 @@ export default function Header(props: any) {
       </NavbarCollapse>
     </Navbar>
   );
+}
+function CartDrawer() {
+	const openCartDrawer = useAppStore(state => state.openCartDrawer);
+	return (
+		<Drawer
+			open={openCartDrawer}
+			onClose={() => useAppStore.setState({ openCartDrawer: false })}
+			heading="Cart"
+			openFrom="right"
+		>
+			<div className="grid ">
+				<Cart layout="drawer" />
+			</div>
+		</Drawer>
+	);
 }

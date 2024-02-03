@@ -47,10 +47,9 @@ const CollectionSection = () => {
     fetchData();
   }, []);
 
-  console.log({data})
   return (
     <div className="container mx-auto my-8">
-      <h2 className="mb-4 text-2xl font-bold">Collections</h2>
+      <h2 className="mb-4 text-2xl font-bold text-center uppercase">Collections</h2>
       <div className="-mx-4 flex flex-wrap">
         {data?.nodes?.map((item:any) => (
           <div key={item.id} className="w-full p-4 md:w-1/3">

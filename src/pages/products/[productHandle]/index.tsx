@@ -89,6 +89,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, shop, relatedProduct
     ],
   };
 
+  console.log({descriptionHtml})
   return (
     <StoreLayout>
       <Head>
@@ -107,14 +108,15 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, shop, relatedProduct
           <div className="md:-mb-nav md:top-nav md:-translate-y-nav md:pt-nav hiddenScroll sticky md:h-screen md:overflow-y-scroll">
             <section className="flex w-full max-w-xl flex-col gap-8 p-6 md:mx-auto md:max-w-sm md:px-0">
               <div className="grid gap-2">
-                <Heading as="h1" className="whitespace-normal">
+                <Heading as="h1" className="whitespace-normal text-3xl">
                   {title}
                 </Heading>
                 {vendor && <Text className={'font-medium opacity-50'}>{vendor}</Text>}
+				<div className="prose dark:prose-invert" dangerouslySetInnerHTML={{ __html: descriptionHtml }} />
               </div>
               {product && <ProductForm product={product} />}
               <div className="grid gap-4 py-4">
-                {descriptionHtml && <ProductDetail title="Product Details" content={descriptionHtml} />}
+                
                 {shippingPolicy?.body && (
                   <ProductDetail
                     title="Shipping"

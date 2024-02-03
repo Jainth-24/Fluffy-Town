@@ -1,5 +1,5 @@
 'use client';
-import { SyntheticEvent, useMemo, useState } from 'react';
+import { SyntheticEvent, useState } from 'react';
 import { Menu, Disclosure } from '@headlessui/react';
 import { useDebounce, useLocation } from 'react-use';
 import { IconCaret, IconFilters, IconXMark } from './Icon';
@@ -8,6 +8,7 @@ import { Link } from './Link';
 import { Filter, Collection, FilterType } from '@site/lib/shopify/types';
 import { useRouter, usePathname } from 'next/navigation';
 import clsx from 'clsx';
+import { Button } from 'flowbite-react';
 
 export type AppliedFilter = {
   label: string;
@@ -31,10 +32,7 @@ export function SortFilter({ filters, appliedFilters = [], children, collections
   return (
     <>
       <div className="flex w-full items-center justify-between">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className={'focus:ring-primary/5 relative flex size-8 items-center justify-center'}
-        >
+        <button onClick={() => setIsOpen(!isOpen)} className={'relative flex size-8 items-center justify-center'}>
           <IconFilters />
         </button>
         <SortMenu />
@@ -57,7 +55,6 @@ export function SortFilter({ filters, appliedFilters = [], children, collections
 export function FiltersDrawer({
   filters = [],
   appliedFilters = [],
-  collections = [],
 }: {
   filters: Filter[];
   appliedFilters: AppliedFilter[];
@@ -143,7 +140,7 @@ function AppliedFilters({ filters = [] }: { filters: AppliedFilter[] }) {
           return (
             <Link
               href={getAppliedFilterLink(filter, params, location)}
-              className="gap flex rounded-full border px-2"
+              className="flex rounded-full border px-2"
               key={`${filter.label}-${filter.urlParam}`}
             >
               <span className="grow">{filter.label}</span>
@@ -224,30 +221,41 @@ function PriceRangeFilter({ max, min }: { max?: number; min?: number }) {
     setMinPrice(newMinPrice);
   };
 
+  const clearFilter = () => {
+    setMinPrice('');
+    setMaxPrice('');
+    console.log({location})
+    router.push(`${location.pathname}`);
+    console.log({min})
+  };
+
   return (
     <div className="flex flex-col">
       <label className="mb-4">
-        <span>from</span>
+        <span>From</span>
         <input
           name="maxPrice"
           className="text-black"
           type="text"
           defaultValue={min}
-          placeholder={'$'}
+          placeholder={'Rs.'}
           onChange={onChangeMin}
         />
       </label>
       <label>
-        <span>to</span>
+        <span>To</span>
         <input
           name="minPrice"
           className="text-black"
           type="number"
           defaultValue={max}
-          placeholder={'$'}
+          placeholder={'Rs.'}
           onChange={onChangeMax}
         />
       </label>
+      <Button className="mt-5" gradientMonochrome="success" onClick={() => clearFilter()}>
+        Clear
+      </Button>
     </div>
   );
 }
@@ -306,7 +314,7 @@ function SortMenu() {
   const activeItem = items.find((item) => item.key === params.get('sort'));
 
   return (
-    <Menu as="div" className="relative z-40">
+    <Menu as="div" className="relative z-40 rounded-md border bg-gray-200 max-md:p-1 sm:p-1 lg:p-2">
       <Menu.Button className="flex items-center">
         <span className="px-2">
           <span className="px-2 font-medium">Sort by:</span>
@@ -315,19 +323,25 @@ function SortMenu() {
         <IconCaret />
       </Menu.Button>
 
-      <Menu.Items as="nav" className="bg-contrast absolute right-0 flex flex-col rounded-sm p-4 text-right">
-        {items.map((item) => (
+      <Menu.Items
+        as="nav"
+        className=" absolute mt-2 flex w-[95%] flex-col rounded-sm bg-white p-2 text-right shadow-md"
+      >
+        {items.map((item, index) => (
           <Menu.Item key={item.label}>
             {() => (
-              <Link
-                className={clsx('block px-3 pb-2 text-sm', {
-                  'font-bold': activeItem?.key === item.key,
-                  'font-normal': activeItem?.key !== item.key,
-                })}
-                href={getSortLink(item.key, params, window.location)}
-              >
-                {item.label}
-              </Link>
+              <>
+                <Link
+                  className={clsx('block p-1 text-sm  hover:bg-gray-200', {
+                    'font-bold': activeItem?.key === item.key,
+                    'font-normal': activeItem?.key !== item.key,
+                  })}
+                  href={getSortLink(item.key, params, window.location)}
+                >
+                  {item.label}
+                </Link>
+                {index < items.length - 1 && <hr className="my-2 w-full" />}
+              </>
             )}
           </Menu.Item>
         ))}

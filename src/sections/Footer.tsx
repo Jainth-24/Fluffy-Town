@@ -51,9 +51,9 @@ export default function FooterSection(props: any) {
                 alt="Brand Logo"
                 name={shop.name}
               />
-              <p className="pr-10 mx-auto my-5">{shop.description}</p>
+              <p className="mx-auto my-5 pr-10">{shop.description}</p>
             </div>
-            <div className="grid w-[70%] grid-cols-2 sm:mt-4 sm:grid-cols-3 sm:gap-6 ">
+            <div className="grid lg:w-[70%] grid-cols-2 gap-2 sm:mt-4 sm:grid-cols-3 sm:gap-6 max-md:gap-5">
               <div>
                 <FooterTitle title="Quick Links" />
                 <FooterLinkGroup col>

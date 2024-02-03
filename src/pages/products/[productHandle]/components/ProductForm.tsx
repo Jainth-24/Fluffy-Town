@@ -36,29 +36,35 @@ const ProductForm = ({ product }: { product: Product & { selectedVariant: Produc
                 <Text>Sold out</Text>
               </Button>
             ) : (
-              <AddToCartButton
-                lines={[
-                  {
-                    merchandiseId: selectedVariant?.id,
-                    quantity: 1,
-                  },
-                ]}
-                variant="primary"
-                data-test="add-to-cart"
-              >
-                <Text as="span" className="flex items-center justify-center gap-2">
-                  <span>Add to Cart</span> <span>·</span>{' '}
-                  <Money withoutTrailingZeros data={selectedVariant?.price} as="span" />
-                  {isOnSale && (
-                    <Money
-                      withoutTrailingZeros
-                      data={selectedVariant?.compareAtPrice}
-                      as="span"
-                      className="strike opacity-50"
-                    />
-                  )}
-                </Text>
-              </AddToCartButton>
+              <>
+			  <div className='flex gap-5'>
+                <Money withoutTrailingZeros data={selectedVariant?.price} as="span" />
+				<span>·</span>
+                {isOnSale && (
+                  <Money
+                    withoutTrailingZeros
+                    data={selectedVariant?.compareAtPrice}
+                    as="span"
+                    className="strike opacity-50"
+                  />
+                )}
+				</div>
+                <AddToCartButton
+                  lines={[
+                    {
+                      merchandiseId: selectedVariant?.id,
+                      quantity: 1,
+                    },
+                  ]}
+                  variant="primary"
+                  data-test="add-to-cart"
+                  className="bg-green-400 p-3 rounded-md text-white shadow-md"
+                >
+                  <Text as="span" className="">
+                    <span>Add to Cart</span>
+                  </Text>
+                </AddToCartButton>
+              </>
             )}
             {!isOutOfStock && (
               <ShopPayButton variantIds={[selectedVariant?.id]} width="full" storeDomain={STORE_DOMAIN} />

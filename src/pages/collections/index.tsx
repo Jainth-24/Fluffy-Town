@@ -10,7 +10,7 @@ import { Collection } from '@site/lib/shopify/types';
 const Collections = ({ collections }:any) => (
    
   <StoreLayout>
-    <PageHeader heading="Collections" />
+    <PageHeader heading="Collections" className='text-4xl'/>
     <Section>
       <Grid items={collections.nodes.length === 3 ? 3 : 2}>
         {collections.nodes.map((collection: Collection) => (

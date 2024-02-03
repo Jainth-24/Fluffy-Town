@@ -5,6 +5,7 @@ import { PageHeader, Section } from '@site/components/Text';
 import { getAllProducts } from '@site/lib/shopify';
 import LoadMoreProducts from './components/LoadMoreProducts'; // Update the path as needed
 import { PAGE_BY } from '@site/lib/const';
+import { StoreLayout } from '@site/layouts/StoreLayout';
 
 type ProductsPageProps = {
   products: Array<any>;
@@ -13,8 +14,8 @@ type ProductsPageProps = {
 
 const ProductsPage: React.FC<ProductsPageProps> = ({ products, pageInfo }) => {
   return (
-    <>
-      <PageHeader heading="All Products" variant="allCollections" />
+    <StoreLayout>
+      <PageHeader heading="Explore Our Products" variant="allCollections" className='text-4xl'/>
       <Section>
         <Grid>
           {products.map((product, i) => (
@@ -23,7 +24,7 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ products, pageInfo }) => {
         </Grid>
         {pageInfo.hasNextPage && <LoadMoreProducts startCursor={pageInfo.endCursor} />}
       </Section>
-    </>
+    </StoreLayout>
   );
 };
 

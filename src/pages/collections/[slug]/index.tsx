@@ -74,7 +74,8 @@ const Collection: React.FC<CollectionProps> = ({ slug, data, appliedFilters }) =
 
   return (
     <StoreLayout>
-      <PageHeader heading={collection.title}>
+
+      <PageHeader heading={collection.title} style={{ backgroundColor: 'rgba(254, 221, 0, 1)' }} className='text-center rounded-md p-8 shadow-lg'>
         {collection?.description && (
           <div className="flex w-full items-baseline justify-between">
             <div>

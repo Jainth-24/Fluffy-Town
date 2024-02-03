@@ -14,9 +14,12 @@
     "prebuild": "npm run codegen"
   },
   "dependencies": {
+    "@types/cookie": "^0.6.0",
     "@types/js-cookie": "^3.0.6",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
+    "cookie": "^0.6.0",
+    "cookies": "^0.9.1",
     "flowbite": "^2.2.1",
     "flowbite-react": "^0.7.2",
     "graphql-request": "^6.1.0",
