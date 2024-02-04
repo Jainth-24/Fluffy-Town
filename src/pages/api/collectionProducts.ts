@@ -7,9 +7,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    console.log('Request URL:', req.url);
     const params = new URL(req.url ?? '', `http://${req.headers.host}`).searchParams;
-    console.log('Received parameters:', params);
 
     const data = await getCollectionProducts({
       variables: {

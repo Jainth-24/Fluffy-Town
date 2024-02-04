@@ -23,7 +23,6 @@ const About = () => {
   }, []);
 
   const page = pageData?.page?.pageByHandle;
-  console.log({ page });
   return (
     <div>
       {page ? (

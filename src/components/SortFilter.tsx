@@ -224,9 +224,7 @@ function PriceRangeFilter({ max, min }: { max?: number; min?: number }) {
   const clearFilter = () => {
     setMinPrice('');
     setMaxPrice('');
-    console.log({location})
     router.push(`${location.pathname}`);
-    console.log({min})
   };
 
   return (

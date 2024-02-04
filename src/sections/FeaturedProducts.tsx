@@ -18,7 +18,6 @@ const FeaturedProducts = () => {
     fetchFeaturedCollections();
   }, []);
 
-  console.log({ featuredCollections });
   return (
     <div className="container mx-auto my-8">
       <h2 className="mb-4 text-center text-2xl font-bold uppercase">New arrivals</h2>

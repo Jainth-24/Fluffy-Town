@@ -20,7 +20,6 @@ function AccountPage() {
   const [customer, setCustomer] = useState<any | null>(null);
   const [featuredProductsResponse, setFeaturedProductsResponse] = useState<any | null>(null);
   const [featuredCollectionsResponse, setFeaturedCollectionsResponse] = useState<any | null>(null);
-  console.log({ searchParams });
 
   useEffect(() => {
     const fetchData = async () => {

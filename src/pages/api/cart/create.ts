@@ -5,7 +5,6 @@ import { formatErrorMessage } from '@site/lib/utils';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  console.log(req.cookies);
   const cartIdCookie = req.cookies?.cartId;
 
   if (cartIdCookie) {

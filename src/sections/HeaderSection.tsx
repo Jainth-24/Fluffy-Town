@@ -19,7 +19,6 @@ export function HeaderSection(props: any) {
     return pathname === href;
   }
   const token = Cookies.get('customerAccessToken') as string;
-  console.log({ menu });
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 0;

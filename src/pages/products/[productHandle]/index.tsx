@@ -89,7 +89,6 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, shop, relatedProduct
     ],
   };
 
-  console.log({descriptionHtml})
   return (
     <StoreLayout>
       <Head>

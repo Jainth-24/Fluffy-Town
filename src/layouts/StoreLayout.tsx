@@ -22,7 +22,6 @@ export function StoreLayout(props: Props) {
   if (!data) {
     return null;
   }
-  console.log({ data });
   return (
     <>
       <Header menu={data.body.data.headerMenu} shop={data.body.data.shop}/>

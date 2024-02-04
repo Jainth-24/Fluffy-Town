@@ -21,6 +21,9 @@ import { Drawer } from '@site/components/Drawer';
 import { Cart } from '@site/components/Cart';
 import CartCount from './CartCount';
 import { usePathname } from 'next/navigation';
+import { Input } from '@site/components/Input';
+import { IconSearch } from '@site/components/Icon';
+import { useSearchParam } from 'react-use';
 
 export default function Header(props: any) {
   const { shop, menu } = props;
@@ -32,7 +35,7 @@ export default function Header(props: any) {
     router.push('/account/login');
   };
   const pathname = usePathname();
-	const isHome = pathname === '/';
+  const isHome = pathname === '/';
 
   // Fetch customer data if there is a valid access token in the cookie
   useEffect(() => {
@@ -50,10 +53,10 @@ export default function Header(props: any) {
     fetchCustomerData();
   }, [token, customerData]);
 
-  console.log(router.pathname);
+  const searchTerm = useSearchParam('q');
   return (
     <Navbar className="border-b-8 border-b-yellow-200 sticky top-0 z-50 bg-white">
-        <CartDrawer />
+      <CartDrawer />
       <NavbarBrand href={shop.primaryDomain.url}>
         <Image
           width={50}
@@ -65,8 +68,32 @@ export default function Header(props: any) {
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">{shop.name}</span>
       </NavbarBrand>
       <div className="mr-2 flex md:order-2">
-      <NavbarToggle className='mx-2' />
-      <CartCount isHome={isHome} />
+        <NavbarToggle className="mx-2" />
+        <form
+					method="get"
+					action={'/search'}
+					className="flex items-center gap-2 max-md:hidden"
+				>
+					<Input
+						defaultValue={searchTerm}
+						className={
+							isHome
+								? 'focus:border-contrast/20 dark:focus:border-primary/20'
+								: 'focus:border-primary/20'
+						}
+						type="search"
+						variant="minisearch"
+						placeholder="Search"
+						name="q"
+					/>
+					<button
+						type="submit"
+						className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5"
+					>
+						<IconSearch />
+					</button>
+				</form>
+        <CartCount isHome={isHome} />
         {customerData ? (
           <>
             <Dropdown
@@ -94,24 +121,37 @@ export default function Header(props: any) {
             </Dropdown>
           </>
         ) : (
-          <Button gradientMonochrome="success" href='/account'>Login</Button>
+          <Button gradientMonochrome="success" href="/account">
+            Login
+          </Button>
         )}
-       
- 
+        <form method="get" action="/search" className="flex items-center gap-2 sm:hidden ml-5">
+          <input
+            className="p-2 border-b border-gray-300 rounded-md w-28 placeholder:opacity-20"
+            type="search"
+            placeholder="Search"
+            name="q"
+          />
+          <button type="submit" className="w-8 h-8 border-gray-300 focus:outline-none focus:ring">
+            <IconSearch />
+          </button>
+        </form>
       </div>
       <NavbarCollapse>
-        {menu.items.map((item:any) =>
+        {menu.items.map((item: any) =>
           !item.items[0] ? (
-            <NavbarLink key={item.title} href={item.url} >
+            <NavbarLink key={item.title} href={item.url}>
               {item.title}
             </NavbarLink>
           ) : (
             <NavbarLink key={item.id}>
               <Dropdown label={item.title} inline>
-                {item.items.map((subitem:any) => (
+                {item.items.map((subitem: any) => (
                   <>
-                  <Dropdown.Item key={subitem.id} href={subitem.url}>{subitem.title}</Dropdown.Item>
-                  <Dropdown.Divider />
+                    <Dropdown.Item key={subitem.id} href={subitem.url}>
+                      {subitem.title}
+                    </Dropdown.Item>
+                    <Dropdown.Divider />
                   </>
                 ))}
               </Dropdown>
@@ -123,17 +163,17 @@ export default function Header(props: any) {
   );
 }
 function CartDrawer() {
-	const openCartDrawer = useAppStore(state => state.openCartDrawer);
-	return (
-		<Drawer
-			open={openCartDrawer}
-			onClose={() => useAppStore.setState({ openCartDrawer: false })}
-			heading="Cart"
-			openFrom="right"
-		>
-			<div className="grid ">
-				<Cart layout="drawer" />
-			</div>
-		</Drawer>
-	);
+  const openCartDrawer = useAppStore((state) => state.openCartDrawer);
+  return (
+    <Drawer
+      open={openCartDrawer}
+      onClose={() => useAppStore.setState({ openCartDrawer: false })}
+      heading="Cart"
+      openFrom="right"
+    >
+      <div className="grid ">
+        <Cart layout="drawer" />
+      </div>
+    </Drawer>
+  );
 }

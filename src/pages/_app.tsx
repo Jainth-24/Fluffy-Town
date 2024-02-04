@@ -6,6 +6,7 @@ import { NextAppProps, DefaultSeo } from '@site/utilities/deps';
 import { ShopifyProvider, CartProvider } from '@shopify/hydrogen-react';
 import { storeDomain, publicStorefrontToken, storefrontApiVersion } from '@site/utilities/storefront';
 import CrispChatbot from '@site/components/CrispChatbot';
+import Head from 'next/head';
 
 export default function App({ Component, pageProps }: NextAppProps) {
   return (
@@ -16,16 +17,19 @@ export default function App({ Component, pageProps }: NextAppProps) {
       storefrontToken={publicStorefrontToken}
       storefrontApiVersion={storefrontApiVersion}
     >
+      <Head>
+        <link rel="icon" href="/logo.png" />
+      </Head>
       <DefaultSeo
-        defaultTitle="Next Shopify Storefront"
-        titleTemplate="%s • Next Shopify Storefront"
-        description="🛍 A Shopping Cart built with TypeScript, Tailwind CSS, Headless UI, Next.js, React.js, Shopify Hydrogen React,... and Shopify Storefront GraphQL API."
+        defaultTitle="Fluffy Town"
+        titleTemplate="%s • Fluffy Town"
+        description="🛍 We believe that fashion should never compromise on comfort."
       />
 
       <CartProvider>
         <ProgressBar color="orange" />
         <CrispChatbot />
-          <Component {...pageProps} />
+        <Component {...pageProps} />
       </CartProvider>
     </ShopifyProvider>
   );

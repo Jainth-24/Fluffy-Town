@@ -12,7 +12,6 @@ interface Props {
 }
 
 const Slide: React.FC<Props> = ({ handle, metafield }) => {
-  console.log({ metafield });
 
   return (
     <Link legacyBehavior href={`/${handle}`}>

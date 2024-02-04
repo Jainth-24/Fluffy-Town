@@ -13,7 +13,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const cart = await applyDiscountToCart({ cartId, discountCodes });
-    return res.status(204).json({ cart });
+    return res.status(200).json({ cart });
   } catch (e) {
     if (isShopifyError(e)) {
       return res.status(e.status).json({ message: formatErrorMessage(e.message) });

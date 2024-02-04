@@ -28,7 +28,6 @@ const Carousel: React.FC = () => {
 
     fetchData();
   }, []);
-  console.log(data?.nodes);
   const collectionData = ((data?.nodes as any[]) || []).filter((slideContent) => slideContent.metafield !== null);
   const settings: Settings = {
     dots: true,
