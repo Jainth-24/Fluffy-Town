@@ -8,7 +8,7 @@ const CrispChatbot: React.FC = () => (
     <script type="text/javascript">
       {`
         window.$crisp=[];
-        window.CRISP_WEBSITE_ID="b60768d8-b430-4bd7-aa52-f65fab02911f";
+        window.CRISP_WEBSITE_ID="89d192b1-26a1-4c49-b001-60b3daf7571d";
         (function(){
           var d=document;
           var s=d.createElement("script");
