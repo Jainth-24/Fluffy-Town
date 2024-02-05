@@ -14,7 +14,7 @@ interface Props {
 const Slide: React.FC<Props> = ({ handle, metafield }) => {
 
   return (
-    <Link legacyBehavior href={`/${handle}`}>
+    <Link legacyBehavior href={`/collections/${handle}`}>
         {metafield?.reference.image && (
           <Image
             src={metafield.reference.image.originalSrc}
