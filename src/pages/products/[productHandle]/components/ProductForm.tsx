@@ -1,14 +1,12 @@
 import { AddToCartButton } from '@site/components/AddToCartButton';
 import { Button } from '@site/components/Button';
 import { Money } from '@site/components/MoneyComponent';
-import ShopPayButton from '@site/components/ShopPayButton';
 import { Product, ProductOption, ProductVariant } from '@site/lib/shopify/types';
 import { Heading, Text } from '@site/components/Text';
 import ItemTabHeading from '@site/components/ItemTabHeading';
 import ProductListBox from '@site/components/ProductListBox';
 
 const ProductForm = ({ product }: { product: Product & { selectedVariant: ProductVariant } }): JSX.Element => {
-  const STORE_DOMAIN = `${process.env.PUBLIC_STORE_DOMAIN!}`;
 
   const firstVariant = product?.variants.nodes[0];
 
@@ -74,6 +72,7 @@ const ProductForm = ({ product }: { product: Product & { selectedVariant: Produc
 };
 
 const ProductOptions = ({ options }: { options: ProductOption[] }) => {
+	console.log({options})
   return (
     <>
       {options

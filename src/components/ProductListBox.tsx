@@ -24,7 +24,7 @@ function ProductListBox(option: IOption) {
           <>
             <Listbox.Button
               ref={closeRef}
-              className={clsx('border-primary flex w-full items-center justify-between rounded border px-4 py-3', {
+              className={clsx('flex w-full items-center justify-between rounded border border-black px-4 py-3', {
                 'rounded-b md:rounded-t md:rounded-b-none': open,
               })}
             >
@@ -33,7 +33,7 @@ function ProductListBox(option: IOption) {
             </Listbox.Button>
             <Listbox.Options
               className={clsx(
-                'border-primary bg-contrast absolute bottom-12 z-30 grid h-48 max-h-0 w-full overflow-y-scroll rounded-t border p-2 transition-[max-height] duration-150 sm:bottom-auto md:rounded-b md:rounded-t-none md:border-b md:border-t-0',
+                'absolute bottom-12 z-30 grid h-48 max-h-0 w-full overflow-y-scroll rounded-t border border-black bg-gray-200 p-2 transition-[max-height] duration-150 sm:bottom-auto md:rounded-b md:rounded-t-none md:border-b md:border-t-0',
                 { 'max-h-48': open }
               )}
             >
@@ -47,7 +47,7 @@ function ProductListBox(option: IOption) {
                         optionName={option.name}
                         optionValue={value}
                         className={clsx(
-                          'text-primary flex w-full cursor-pointer items-center justify-start rounded p-2 text-left transition',
+                          'text-black flex w-full cursor-pointer items-center justify-start rounded p-2 text-left transition',
                           { 'bg-primary/10': active }
                         )}
                         onClick={() => {

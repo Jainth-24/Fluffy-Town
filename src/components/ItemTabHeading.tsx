@@ -17,6 +17,7 @@ const ItemTabHeading = (option: IOption) => {
     <>
       {option.values.map((value, index) => {
         const checked = isChecked(option.name, value);
+		console.log({})
         const id = `option-${index}-${value}`;
         return (
           <Text key={id}>
@@ -24,9 +25,9 @@ const ItemTabHeading = (option: IOption) => {
               optionName={option.name}
               optionValue={value}
               className={clsx(
-                'border-primary/0 cursor-pointer border-b-[1.5px] py-1 leading-none transition-all duration-200',
+                'cursor-pointer rounded-full bg-gray-100 px-3 py-2 transition-all duration-200 text-sm shadow-sm',
                 {
-                  'border-primary/50': checked || searchDefaultOption(option.name, value, option.values[0]),
+                  'bg-green-200 rounded-full px-3 py-2': checked || searchDefaultOption(option.name, value, option.values[0]),
                 }
               )}
             />
