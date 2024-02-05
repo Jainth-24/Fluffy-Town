@@ -2,12 +2,12 @@ import cn from 'clsx';
 import Image from 'next/image';
 
 const ProductGallery = ({ media, className }: { media: any['node'][]; className?: string }) => {
-  if (!media.length) {
+  if (!media?.length) {
     return null;
   }
 
   return (
-    <div className={`swimlane hiddenScroll md:grid-flow-row md:grid-cols-2 md:overflow-x-auto md:p-0 ${className}`}>
+    <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 ${className}`}>
       {media.map((med, i) => {
         const isFirst = i === 0;
         const isFourth = i === 3;
@@ -21,14 +21,12 @@ const ProductGallery = ({ media, className }: { media: any['node'][]; className?
           },
         };
 
-        const style = [
-          isFullWidth ? 'md:col-span-2' : 'md:col-span-1',
-          isFirst || isFourth ? '' : 'md:aspect-[4/5]',
-          'aspect-square snap-center card-image bg-white dark:bg-contrast/10 w-mobileGallery md:w-full',
-        ].join(' ');
+        const colSpanClass = isFullWidth ? 'md:col-span-2' : 'md:col-span-1';
+        const aspectRatioClass = isFirst || isFourth ? '' : 'md:aspect-[4/5]';
+        const containerStyle = `${colSpanClass} ${aspectRatioClass} aspect-square overflow-hidden bg-white dark:bg-contrast/10 rounded-md`;
 
         return (
-          <div className={style} key={med.id || med.image.id}>
+          <div className={containerStyle} key={med.id || med.image.id}>
             {med.image && (
               <Image
                 alt={med.alt}
@@ -37,7 +35,7 @@ const ProductGallery = ({ media, className }: { media: any['node'][]; className?
                 width={data.image.width}
                 height={data.image.height}
                 sizes={isFirst || isFourth ? '(min-width: 48em) 60vw, 90vw' : '(min-width: 48em) 30vw, 90vw'}
-                className={cn('object-cover w-full h-full aspect-square fadeIn', {
+                className={cn('object-cover w-full h-full transition-opacity duration-300', {
                   'aspect-[4/5]': !isFirst && !isFourth,
                 })}
               />

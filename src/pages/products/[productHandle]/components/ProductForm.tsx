@@ -66,9 +66,6 @@ const ProductForm = ({ product }: { product: Product & { selectedVariant: Produc
                 </AddToCartButton>
               </>
             )}
-            {!isOutOfStock && (
-              <ShopPayButton variantIds={[selectedVariant?.id]} width="full" storeDomain={STORE_DOMAIN} />
-            )}
           </div>
         )}
       </div>

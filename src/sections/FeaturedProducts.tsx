@@ -1,8 +1,10 @@
 import { getFeaturedProducts } from '@site/lib/shopify';
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const FeaturedProducts = () => {
+  const router = useRouter();
   const [featuredCollections, setFeaturedCollections] = useState<any>([]);
 
   useEffect(() => {
@@ -24,7 +26,10 @@ const FeaturedProducts = () => {
       <div className="-mx-4 flex flex-wrap">
         {featuredCollections.map((item: any) => (
           <div key={item?.id} className="w-full p-4 md:w-1/3">
-            <div className="relative h-96 overflow-hidden rounded-md bg-gray-200">
+            <div
+              className="relative h-96 overflow-hidden rounded-md bg-gray-200 cursor-pointer"
+              onClick={() => router.push(`/products/${item.handle}`)}
+            >
               <Image
                 src={item?.variants?.nodes[0].image?.url}
                 alt={item.title}
