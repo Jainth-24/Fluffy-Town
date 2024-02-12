@@ -3,6 +3,7 @@ import Slider, { Settings } from 'react-slick';
 import Slide from './Slide';
 import { getAllCollections, getHomepageSeo } from '@site/lib/shopify';
 import { PAGE_BY } from '@site/lib/const';
+import { Spinner } from 'flowbite-react';
 
 interface Collection {
   nodes: Object;
@@ -11,6 +12,7 @@ interface Collection {
 
 const Carousel: React.FC = () => {
   const [data, setData] = useState<Collection | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,13 +23,16 @@ const Carousel: React.FC = () => {
           },
         });
         setData(result.body.data.collections);
+        setLoading(false); // Set loading to false after data fetching is done
       } catch (error) {
         console.error('Error fetching data:', error);
+        setLoading(false); // Set loading to false if an error occurs
       }
     };
 
     fetchData();
   }, []);
+
   const collectionData = ((data?.nodes as any[]) || []).filter((slideContent) => slideContent.metafield !== null);
   const settings: Settings = {
     dots: true,
@@ -44,6 +49,14 @@ const Carousel: React.FC = () => {
       </div>
     ),
   };
+
+  if (loading) {
+    return (
+      <div className='flex justify-center items-center h-screen'>
+        <Spinner className='text-center' color="warning" aria-label="Loading spinner" size={'lg'}/>
+      </div>
+    );
+  }
 
   return (
     <div className="relative">

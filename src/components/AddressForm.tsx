@@ -113,7 +113,6 @@ function AddressForm({ isNewAddress, address, defaultAddress }: IAddressForm) {
 
   async function handleCleanError() {
     formError = null;
-    router.replace(`/account/address/${isNewAddress ? 'add' : address?.id}`);
     router.push('/account');
   }
 

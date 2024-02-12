@@ -3,6 +3,7 @@ import { Button } from '@site/components/Button';
 import CollectionCard from '@site/components/CollectionCard';
 import { Grid } from '@site/components/Grid';
 import { Collection } from '@site/lib/shopify/types';
+import { Spinner } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
@@ -39,9 +40,7 @@ function LoadMoreCollections({ startCursor }: Props) {
       </Grid>
       <div className="mt-6 flex items-center justify-center" ref={nextLinkRef}>
         {isLoading && (
-          <Button variant="secondary" width="full">
-            Loading
-          </Button>
+          <Spinner color="warning" aria-label="Warning spinner example" size={"lg"}/>
         )}
       </div>
     </>

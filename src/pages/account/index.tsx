@@ -13,6 +13,7 @@ import { getIdFromURL } from '@site/lib/utils';
 import AddressForm from '@site/components/AddressForm';
 import { useRouter } from 'next/router';
 import { StoreLayout } from '@site/layouts/StoreLayout';
+import { Spinner } from 'flowbite-react';
 
 function AccountPage() {
   const router = useRouter();
@@ -45,7 +46,11 @@ function AccountPage() {
 
   if (!customer) {
     // Render loading state or return null
-    return null;
+    return <div className='flex justify-center items-center h-screen'>
+    <Spinner className='text-center' color="warning" aria-label="Warning spinner example" size={"lg"}/>
+</div>
+;
+
   }
 
   const { orders } = customer;

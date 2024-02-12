@@ -132,8 +132,8 @@ function CartLines({ layout = 'drawer' }: { layout: Layouts }) {
 	const className = clsx([
 		y > 0 ? 'border-t' : '',
 		layout === 'page'
-			? 'flex-grow md:translate-y-4'
-			: 'px-6 pb-6 sm-max:pt-2 overflow-auto transition md:px-12',
+			? 'grow md:translate-y-4'
+			: 'sm-max:pt-2 overflow-auto px-6 pb-6 transition md:px-12',
 	]);
 
 	return (
@@ -142,7 +142,7 @@ function CartLines({ layout = 'drawer' }: { layout: Layouts }) {
 			aria-labelledby="cart-contents"
 			className={className}
 		>
-			<ul className="grid gap-6 md:gap-10">
+			<ul className="mt-10 grid gap-6 md:gap-10">
 				{currentLines.map((line: CartLine) => (
 					<CartLineItem
 						key={line.id}

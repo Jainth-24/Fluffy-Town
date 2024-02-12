@@ -104,6 +104,7 @@ export default function Header(props: any) {
                   alt="User settings"
                   img="https://cdn.icon-icons.com/icons2/2622/PNG/512/gui_user_settings_icon_158346.png"
                   rounded
+                  size="sm"
                 />
               }
             >
@@ -113,9 +114,7 @@ export default function Header(props: any) {
                 </span>
                 <span className="block truncate text-sm font-medium">{customerData.email}</span>
               </DropdownHeader>
-              <DropdownItem>Dashboard</DropdownItem>
-              <DropdownItem>Settings</DropdownItem>
-              <DropdownItem>Earnings</DropdownItem>
+              <DropdownItem href='/account'>Dashboard</DropdownItem>
               <DropdownDivider />
               <DropdownItem onClick={() => signOut()}>Sign out</DropdownItem>
             </Dropdown>

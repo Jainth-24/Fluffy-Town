@@ -7,6 +7,7 @@ import { recoverCustomersPassword } from '@site/lib/shopify';
 import AuthLayout from '../../../components/AuthLayout';
 import { useRouter } from 'next/router';
 import { StoreLayout } from '@site/layouts/StoreLayout';
+import { Button } from 'flowbite-react';
 
 let emailError: string | null = null;
 let isSubmitted: boolean = false;
@@ -79,13 +80,14 @@ export default function RecoverPassword() {
             </form>
           )}
           {isSubmitted && (
-            <div className="mt-8">
-              <button
+            <div className="mt-8 justify-center flex">
+              <Button
+                gradientMonochrome="success"
                 onClick={() => router.replace('/')} // Navigate to the home page
-                className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+                className=""
               >
                 Go to Home
-              </button>
+              </Button>
             </div>
           )}
         </div>

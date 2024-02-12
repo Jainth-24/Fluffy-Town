@@ -14,14 +14,14 @@ interface Props {
 const Slide: React.FC<Props> = ({ handle, metafield }) => {
 
   return (
-    <Link legacyBehavior href={`/collections/${handle}`}>
+    <Link legacyBehavior href={`/collections/${handle}`} >
         {metafield?.reference.image && (
           <Image
             src={metafield.reference.image.originalSrc}
-            alt=""
+            alt="Hero Banner"
             width={1200}
-            height={500}
-            layout="responsive"
+            height={370}
+            
           />
         )}
     </Link>

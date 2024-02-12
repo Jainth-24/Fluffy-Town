@@ -19,9 +19,8 @@ interface ProductPageProps {
 }
 
 const ProductPage: React.FC<ProductPageProps> = ({ product, shop, relatedProducts, searchParams }) => {
-	
   const selectedVariant = product?.selectedVariant ?? product?.variants.nodes[0];
-  console.log({selectedVariant})
+  console.log({ selectedVariant });
   const search = new URLSearchParams(searchParams);
   const url = `/products/${product?.handle}`;
   const description = truncate(product?.seo?.description ?? product?.description ?? '');
@@ -110,11 +109,13 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, shop, relatedProduct
                   {product?.title}
                 </Heading>
                 {product?.vendor && <Text className={'font-medium opacity-50'}>{product?.vendor}</Text>}
-				<div className="prose dark:prose-invert" dangerouslySetInnerHTML={{ __html: product?.descriptionHtml }} />
+                <div
+                  className="prose dark:prose-invert"
+                  dangerouslySetInnerHTML={{ __html: product?.descriptionHtml }}
+                />
               </div>
               {product && <ProductForm product={product} />}
               <div className="grid gap-4 py-4">
-                
                 {shop?.shippingPolicy?.body && (
                   <ProductDetail
                     title="Shipping"
@@ -145,7 +146,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params, query }) 
 
   const selectedOptions: Record<string, string>[] = [];
   new URLSearchParams(searchParams)?.forEach((value, name) => {
-    selectedOptions.push({ name, value });
+    if (name === 'Size') {
+      selectedOptions.push({ name, value });
+    }
   });
 
   const { shop, product } = await getProduct(productHandle as string, selectedOptions);

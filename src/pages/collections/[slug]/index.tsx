@@ -10,6 +10,7 @@ import Head from 'next/head';
 import { PageHeader, Section, Text } from '@site/components/Text';
 import ProductGrid from '@site/components/ProductGrid';
 import { StoreLayout } from '@site/layouts/StoreLayout';
+import { Spinner } from 'flowbite-react';
 
 interface CollectionProps {
   slug: string;
@@ -24,7 +25,9 @@ export type FiltersQueryParams = Array<VariantFilterParam | PriceFiltersQueryPar
 const Collection: React.FC<CollectionProps> = ({ slug, data, appliedFilters }) => {
   const router = useRouter();
   if (router.isFallback) {
-    return <div>Loading...</div>;
+    return <div className='flex justify-center items-center h-screen'>
+    <Spinner className='text-center' color="warning" aria-label="Warning spinner example" size={"lg"}/>
+</div>;
   }
 
   const collection = data.body.data.collection;

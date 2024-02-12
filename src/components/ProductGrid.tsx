@@ -8,6 +8,7 @@ import { useInView } from 'react-intersection-observer';
 import { useSearchParams } from 'next/navigation';
 import { handleCollectionProductsSearchParams } from '@site/lib/handleCollectionProductsSearchParams';
 import { Link } from './Link';
+import { Spinner } from 'flowbite-react';
 
 export default function ProductGrid({ ...props }: { handle: string }) {
   const [cursor, setCursor] = useState<string | null | undefined>(undefined);
@@ -93,9 +94,7 @@ export default function ProductGrid({ ...props }: { handle: string }) {
       </Grid>
       <div className="mt-6 flex items-center justify-center" ref={nextLinkRef}>
         {isLoading && (
-          <Button variant="secondary" width="full">
-            Loading
-          </Button>
+          <Spinner color="warning" aria-label="Warning spinner example" size="lg"/>
         )}
       </div>
     </>

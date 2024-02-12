@@ -70,7 +70,14 @@ export const ProductCard = ({
                 height={45}
               />
             )}
-            <Text as="label" size="fine" className="text-notice absolute right-0 top-0 m-4 text-right">
+            <Text
+              as="label"
+              size="fine"
+              className={clsx('absolute right-0 top-0 m-1 rounded p-1 text-right text-black', {
+                'text-green-500': cardLabel === 'Sale', // Customize background color for Sale label
+                'text-blue-500': cardLabel === 'New', // Customize background color for New label
+              })}
+            >
               {cardLabel}
             </Text>
           </div>

@@ -2,8 +2,11 @@ import AddressCard from '@site/components/AddressCard';
 import { Text } from '@site/components/Text';
 import { Customer, MailingAddress } from '@site/lib/shopify/types';
 import { convertObjectToQueryString } from '@site/lib/utils';
+import { Button } from 'flowbite-react';
+import { useRouter } from 'next/navigation';
 
 export default function AccountBook({ customer, addresses }: { customer: Customer; addresses: MailingAddress[] }) {
+  const router =useRouter()
   return (
     <>
       <div className="grid w-full gap-4 p-4 py-6 md:gap-8 md:p-8 lg:p-12">
@@ -15,14 +18,15 @@ export default function AccountBook({ customer, addresses }: { customer: Custome
             </Text>
           )}
           <div className="w-48">
-            <a
-              href={`account?${convertObjectToQueryString({
+            <Button
+            gradientMonochrome="success"
+              onClick={()=>router.push(`account?${convertObjectToQueryString({
                 modal: 'address-add',
-              })}`}
-              className="border-primary/10 bg-contrast text-primary mb-6 mt-2 inline-block w-full rounded border px-6 py-3 text-center text-sm font-medium"
+              })}`)}
+              className="  text-primary mb-6 mt-2 w-full rounded-sm items-center text-sm font-medium text-white"
             >
               Add an Address
-            </a>
+            </Button>
           </div>
           {Boolean(addresses?.length) && (
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">

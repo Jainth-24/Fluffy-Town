@@ -292,7 +292,7 @@ export const PRODUCT_VARIANT_FRAGMENT = `#graphql
   }
 `;
 
-export const PRODUCT_QUERY = `#graphql
+export const  PRODUCT_QUERY = `#graphql
   query Product(
     $country: CountryCode
     $language: LanguageCode

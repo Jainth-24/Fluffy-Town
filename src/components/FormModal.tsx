@@ -11,10 +11,10 @@ interface IFormModal {
 function FormModal({ heading, children, action }: IFormModal) {
   return (
     <>
-      <div className="bg-primary/40 fixed inset-0 z-20 bg-opacity-75 transition-opacity" />
+      <div className="fixed inset-0 z-20 bg-white bg-opacity-75 transition-opacity" />
       <div className="fixed inset-0 z-50 overflow-y-auto">
         <div className="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
-          <div className="bg-contrast relative flex-1 overflow-hidden rounded px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-12 sm:w-full sm:max-w-sm sm:flex-none sm:p-6">
+          <div className="bg-white relative flex-1 overflow-hidden rounded px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-12 sm:w-full sm:max-w-sm sm:flex-none sm:p-6">
             <Text className="mb-6 mt-4" as="h3" size="lead">
               {heading}
             </Text>
