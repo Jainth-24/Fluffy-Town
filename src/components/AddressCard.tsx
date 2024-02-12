@@ -21,10 +21,10 @@ function AddressCard({ address, defaultAddress }: { address: MailingAddress; def
     router.replace('/account');
   };
   return (
-    <div  className="flex flex-col rounded-lg border bg-gray-200 p-6 lg:p-8">
+    <div className="flex flex-col rounded-md p-6 lg:p-8 bg-gray-50">
       {defaultAddress && (
         <div className="mb-3 flex flex-row">
-          <span className="bg-primary/20 text-primary/50 rounded-full px-3 py-1 text-xs font-medium">Default</span>
+          <span className="bg-gray-200 rounded-full px-3 py-1 text-xs font-medium">Default</span>
         </div>
       )}
       <ul className="flex-1 flex-row">

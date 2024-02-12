@@ -10,8 +10,9 @@ export function middleware(request: NextRequest) {
   const isRecoverPasswordPage = request.nextUrl.pathname.startsWith('/account/recover');
   const isResetPasswordPage = request.nextUrl.pathname.startsWith('/account/reset');
   const isRegisterPage = request.nextUrl.pathname === '/account/register';
+  const ismyOrdersPage =  request.nextUrl.pathname === '/myorders';
 
-  const authPages = isLoginPage || isRecoverPasswordPage || isRegisterPage || isResetPasswordPage;
+  const authPages = isLoginPage || isRecoverPasswordPage || isRegisterPage || isResetPasswordPage || ismyOrdersPage;
 
   if (authPages && isAuthenticated(request)) {
     return NextResponse.redirect(new URL('/account', request.url));

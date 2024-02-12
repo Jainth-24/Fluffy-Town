@@ -15,7 +15,7 @@ type ProductsPageProps = {
 const ProductsPage: React.FC<ProductsPageProps> = ({ products, pageInfo }) => {
   return (
     <StoreLayout>
-      <PageHeader heading="Explore Our Products" variant="allCollections" className='text-4xl'/>
+      <PageHeader heading="Explore Our Products" variant="allCollections" className="text-lead text-xl font-bold bg-yellow-200 p-3 text-center uppercase"/>
       <Section>
         <Grid>
           {products.map((product, i) => (

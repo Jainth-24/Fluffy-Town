@@ -10,7 +10,7 @@ import { Collection } from '@site/lib/shopify/types';
 const Collections = ({ collections }:any) => (
    
   <StoreLayout>
-    <PageHeader heading="Collections" className='text-4xl'/>
+    <PageHeader heading="Explore Our Collections" variant="allCollections" className="text-lead text-xl font-bold bg-yellow-200 p-3 text-center uppercase"/>
     <Section>
       <Grid items={collections.nodes.length === 3 ? 3 : 2}>
         {collections.nodes.map((collection: Collection) => (
@@ -31,6 +31,10 @@ export async function getServerSideProps() {
   const data = await getAllCollections({
     variables: {
       first: PAGE_BY,
+      metafieldIdentifiers: [
+        { namespace: 'custom', key: 'hero_Image' },
+        { namespace: 'custom', key: 'category' },
+      ],
     },
   });
 

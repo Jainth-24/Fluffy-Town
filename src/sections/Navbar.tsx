@@ -104,6 +104,7 @@ export default function Header(props: any) {
                 <span className="block truncate text-sm font-medium">{customerData.email}</span>
               </DropdownHeader>
               <DropdownItem href="/account">Dashboard</DropdownItem>
+              <DropdownItem href="/myorders">My Orders</DropdownItem>
               <DropdownDivider />
               <DropdownItem onClick={() => signOut()}>Sign out</DropdownItem>
             </Dropdown>

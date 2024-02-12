@@ -45,13 +45,13 @@ const Category = () => {
   return (
     <StoreLayout>
       <div className="mx-auto my-8">
-        <h2 className="mb-4 text-center text-2xl font-bold uppercase bg-yellow-200 py-5">{slug ? slug.toUpperCase() : ''}</h2>
+        <h2 className="text-lead text-xl font-bold bg-yellow-200 p-3 text-center uppercase">{slug ? slug.toUpperCase() : ''}</h2>
         <div className=" flex flex-wrap">
           {selectedCategory?.length ? (
             selectedCategory.map((item: any) => (
               <Link
                 key={item.id}
-                className="w-full cursor-pointer p-4 md:w-1/3"
+                className="w-full cursor-pointer p-5 md:w-1/3"
                 href={`/collections/${item.handle}`}>
                 <div
                   className="relative h-96 overflow-hidden rounded-md bg-gray-200"

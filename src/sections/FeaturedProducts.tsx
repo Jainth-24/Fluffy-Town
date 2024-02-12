@@ -22,7 +22,7 @@ const FeaturedProducts = () => {
 
   return (
     <div className="container mx-auto my-8">
-      <h2 className="mb-4 text-center text-2xl font-bold uppercase">New arrivals</h2>
+      <h2 className="text-lead text-xl font-bold bg-yellow-200 p-3 text-center uppercase">New arrivals</h2>
       <div className="-mx-4 flex flex-wrap">
         {featuredCollections.map((item: any) => (
           <div key={item?.id} className="w-full p-4 md:w-1/3">

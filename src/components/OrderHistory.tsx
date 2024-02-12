@@ -6,7 +6,7 @@ export default function OrderHistory({ orders }: { orders: Order[] }) {
   return (
     <div className="mt-6">
       <div className="grid w-full gap-4 p-4 py-6 md:gap-8 md:p-8 lg:p-12">
-        <h2 className="text-lead font-bold">Order History</h2>
+        <h2 className="text-lead text-xl font-bold bg-yellow-200 p-3 text-center">Order History</h2>
         {orders?.length ? <Orders orders={orders} /> : <EmptyOrders />}
       </div>
     </div>

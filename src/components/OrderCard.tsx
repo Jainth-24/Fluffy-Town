@@ -11,7 +11,7 @@ export function OrderCard({ order }: { order: Order }) {
   const lineItems = flattenConnection(order?.lineItems);
 
   return (
-    <li className="grid rounded border text-center">
+    <li className="grid rounded border text-center bg-gray-50">
       <Link
         href={`/account/orders/${legacyOrderId}?${key}`}
         className="grid items-center gap-4 p-4 md:grid-cols-2 md:gap-6 md:p-6"
@@ -51,7 +51,7 @@ export function OrderCard({ order }: { order: Order }) {
                 className={`rounded-full px-3 py-1 text-xs font-medium ${
                   order.fulfillmentStatus === 'FULFILLED'
                     ? 'bg-green-100 text-green-800'
-                    : 'bg-primary/5 text-primary/50'
+                    : 'bg-yellow-200'
                 }`}
               >
                 <Text size="fine">{statusMessage(order.fulfillmentStatus)}</Text>

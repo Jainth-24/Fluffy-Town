@@ -34,7 +34,7 @@ const CollectionSection = () => {
 
   return (
     <div className="container mx-auto my-16">
-      <h2 className="mb-4 text-center text-2xl font-bold uppercase">Categories</h2>
+      <h2 className="text-lead text-xl font-bold bg-yellow-200 p-3 text-center uppercase" >Categories</h2>
       <div className="-mx-4 flex flex-wrap">
         {mockData?.nodes?.map((item: any) => (
           <div
