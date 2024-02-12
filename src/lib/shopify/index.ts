@@ -226,6 +226,7 @@ export async function getAllCollections({
     startCursor?: string;
     first?: number;
     endCursor?: string;
+    metafieldIdentifiers?: { namespace: string; key: string }[]; 
   };
 }) {
   const data = await shopifyFetch<{
@@ -237,6 +238,7 @@ export async function getAllCollections({
       startCursor?: string;
       first?: number;
       endCursor?: string;
+      metafieldIdentifiers?: { namespace: string; key: string }[]; 
     };
   }>({
     query: COLLECTIONS_QUERY,

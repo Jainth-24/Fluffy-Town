@@ -76,7 +76,7 @@ const ProductOptions = ({ options }: { options: ProductOption[] }) => {
   return (
     <>
       {options
-        ?.filter((option) => option?.values.length > 1)
+        ?.filter((option) => option?.values.length >= 1)
         .map((option) => (
           <div key={option?.name} className="mb-4 flex flex-col flex-wrap gap-y-2 last:mb-0">
             <Heading as="legend" size="lead" className="min-w-[4rem]">

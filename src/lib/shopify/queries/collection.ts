@@ -8,6 +8,7 @@ export const COLLECTIONS_QUERY = `#graphql
     $last: Int
     $startCursor: String
     $endCursor: String
+    $metafieldIdentifiers: [HasMetafieldsIdentifier!]!
   ) @inContext(country: $country, language: $language) {
     collections(first: $first, last: $last, before: $startCursor, after: $endCursor) {
       nodes {
@@ -26,17 +27,23 @@ export const COLLECTIONS_QUERY = `#graphql
           height
           altText
         }
-        metafield(namespace: "custom", key: "hero_image") {
-            id
-            namespace
-            reference {
-              ... on MediaImage {
-                image {
-                  originalSrc
-                }
+        metafields(identifiers: $metafieldIdentifiers) {
+          createdAt
+          description
+          id
+          key
+          namespace
+          reference {
+            ... on MediaImage {
+              image {
+                originalSrc
               }
             }
-            value
+          }
+          parentResource
+          type
+          updatedAt
+          value
         }
       }
       pageInfo {

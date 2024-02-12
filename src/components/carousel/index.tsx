@@ -20,6 +20,10 @@ const Carousel: React.FC = () => {
         const result = await getAllCollections({
           variables: {
             first: PAGE_BY,
+            metafieldIdentifiers: [
+              { namespace: 'custom', key: 'hero_Image' },
+              { namespace: 'custom', key: 'category' },
+            ],
           },
         });
         setData(result.body.data.collections);
@@ -33,7 +37,7 @@ const Carousel: React.FC = () => {
     fetchData();
   }, []);
 
-  const collectionData = ((data?.nodes as any[]) || []).filter((slideContent) => slideContent.metafield !== null);
+  const collectionData = ((data?.nodes as any[]) || []).filter((slideContent) => slideContent.metafields[0] !== null);
   const settings: Settings = {
     dots: true,
     infinite: true,

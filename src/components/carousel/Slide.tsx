@@ -8,16 +8,17 @@ interface Props {
   description: string;
   image: { url: string };
   handle: string;
-  metafield: { reference: { image: { originalSrc: string } } };
+  metafields: any;
 }
 
-const Slide: React.FC<Props> = ({ handle, metafield }) => {
+const Slide: React.FC<Props> = ({ handle, metafields }) => {
 
+  console.log({metafields})
   return (
     <Link legacyBehavior href={`/collections/${handle}`} >
-        {metafield?.reference.image && (
+        {metafields[0]?.reference.image && (
           <Image
-            src={metafield.reference.image.originalSrc}
+            src={metafields[0].reference.image.originalSrc}
             alt="Hero Banner"
             width={1200}
             height={370}

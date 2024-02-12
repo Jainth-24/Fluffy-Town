@@ -98,8 +98,8 @@ const en: { [key: string]: string } = {
   beautyBT: 'Accentuates your Beauty',
   beautyBD:
     'allergen-free, people with all skin types can find products they need. Approved by the World Health Organization, products from world-renowned brands.',
-  deliver: 'express delivery',
-  cash: 'payment on the spot',
+  deliver: 'Express delivery',
+  cash: 'Payment on the spot',
   support: '24/7 support',
   warrantyBenefit: 'Guarantee the originality',
   return: 'commodity-back guarantee',

@@ -59,6 +59,7 @@ export default function FooterSection(props: any) {
                 <FooterLinkGroup col>
                   <FooterLink href="/collections">Collections</FooterLink>
                   <FooterLink href="/products">Products</FooterLink>
+                  <FooterLink href="/categoreis">Categories</FooterLink>
                 </FooterLinkGroup>
               </div>
               <div>

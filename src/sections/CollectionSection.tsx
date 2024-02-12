@@ -1,8 +1,5 @@
-// components/CollectionSection.js
-import { PAGE_BY } from '@site/lib/const';
-import { getAllCollections } from '@site/lib/shopify';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 interface Collection {
   nodes: any;
@@ -10,37 +7,43 @@ interface Collection {
 }
 
 const CollectionSection = () => {
-  const [data, setData] = useState<Collection | null>(null);
   const router = useRouter();
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await getAllCollections({
-          variables: {
-            first: 10,
-          },
-        });
-        setData(result.body.data.collections);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
 
-    fetchData();
-  }, []);
+  const mockData = {
+    nodes: [
+      {
+        id: 1,
+        handle: 'mens',
+        title: 'Mens',
+        image: { url: 'https://cdn.shopify.com/s/files/1/0759/8342/1732/files/mens-card-image.jpg?v=1707741170' },
+      },
+      {
+        id: 2,
+        handle: 'women',
+        title: 'Women',
+        image: { url: 'https://cdn.shopify.com/s/files/1/0759/8342/1732/files/womens-card-image.jpg' },
+      },
+      {
+        id: 3,
+        handle: 'kids',
+        title: 'Kids',
+        image: { url: 'https://cdn.shopify.com/s/files/1/0759/8342/1732/files/kids-card-image.jpg' },
+      },
+    ],
+  };
 
   return (
-    <div className="container mx-auto my-8">
-      <h2 className="mb-4 text-center text-2xl font-bold uppercase">Collections</h2>
+    <div className="container mx-auto my-16">
+      <h2 className="mb-4 text-center text-2xl font-bold uppercase">Categories</h2>
       <div className="-mx-4 flex flex-wrap">
-        {data?.nodes?.map((item: any) => (
+        {mockData?.nodes?.map((item: any) => (
           <div
             key={item.id}
             className="w-full cursor-pointer p-4 md:w-1/3"
-            onClick={() => router.push(`collections/${item.handle}`)}
+            onClick={() => router.push(`categories/${item.handle}`)}
           >
             <div
-              className="relative h-96 overflow-hidden rounded-md bg-gray-200"
+              className="relative h-96 overflow-hidden rounded-md bg-gray-200 transform transition-transform hover:scale-105"
               style={{ backgroundImage: `url(${item.image?.url})`, backgroundSize: 'cover' }}
             >
               <div className="absolute inset-x-0 bottom-0 bg-black bg-opacity-50 p-4 text-white">

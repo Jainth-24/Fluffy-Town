@@ -14,7 +14,7 @@ import {
 import Image from 'next/image';
 import Cookies from 'js-cookie';
 import { getCustomer } from '@site/lib/shopify';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import useAppStore from '@site/store/app-store';
 import { Drawer } from '@site/components/Drawer';
@@ -69,30 +69,19 @@ export default function Header(props: any) {
       </NavbarBrand>
       <div className="mr-2 flex md:order-2">
         <NavbarToggle className="mx-2" />
-        <form
-					method="get"
-					action={'/search'}
-					className="flex items-center gap-2 max-md:hidden"
-				>
-					<Input
-						defaultValue={searchTerm}
-						className={
-							isHome
-								? 'focus:border-contrast/20 dark:focus:border-primary/20'
-								: 'focus:border-primary/20'
-						}
-						type="search"
-						variant="minisearch"
-						placeholder="Search"
-						name="q"
-					/>
-					<button
-						type="submit"
-						className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5"
-					>
-						<IconSearch />
-					</button>
-				</form>
+        <form method="get" action={'/search'} className="flex items-center gap-2 max-md:hidden">
+          <Input
+            defaultValue={searchTerm}
+            className={isHome ? 'focus:border-contrast/20 dark:focus:border-primary/20' : 'focus:border-primary/20'}
+            type="search"
+            variant="minisearch"
+            placeholder="Search"
+            name="q"
+          />
+          <button type="submit" className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5">
+            <IconSearch />
+          </button>
+        </form>
         <CartCount isHome={isHome} />
         {customerData ? (
           <>
@@ -114,7 +103,7 @@ export default function Header(props: any) {
                 </span>
                 <span className="block truncate text-sm font-medium">{customerData.email}</span>
               </DropdownHeader>
-              <DropdownItem href='/account'>Dashboard</DropdownItem>
+              <DropdownItem href="/account">Dashboard</DropdownItem>
               <DropdownDivider />
               <DropdownItem onClick={() => signOut()}>Sign out</DropdownItem>
             </Dropdown>
@@ -145,13 +134,11 @@ export default function Header(props: any) {
           ) : (
             <NavbarLink key={item.id}>
               <Dropdown label={item.title} inline>
-                {item.items.map((subitem: any) => (
-                  <>
-                    <Dropdown.Item key={subitem.id} href={subitem.url}>
-                      {subitem.title}
-                    </Dropdown.Item>
-                    <Dropdown.Divider />
-                  </>
+                {item.items.map((subitem: any, index: number) => (
+                  <React.Fragment key={subitem.id}>
+                    <Dropdown.Item href={subitem.url} className=' w-48 text-center'>{subitem.title}</Dropdown.Item>
+                    {index !== item.items.length - 1 && <Dropdown.Divider />}{' '}
+                  </React.Fragment>
                 ))}
               </Dropdown>
             </NavbarLink>

@@ -196,7 +196,7 @@ export function CartEmpty({ layout = 'drawer' }: { layout?: Layouts }) {
 
   return (
     <div ref={scrollRef} className={container[layout]} hidden={hidden}>
-      <section className="flex flex-col justify-center w-full items-center gap-6 py-12">
+      <section className="flex flex-col justify-center w-full items-center gap-6 py-12 text-center">
         <Text format>Looks like you haven&rsquo;t added anything yet, let&rsquo;s get you started!</Text>
         <div>
           <Button
