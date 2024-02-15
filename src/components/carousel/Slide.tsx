@@ -12,17 +12,15 @@ interface Props {
 }
 
 const Slide: React.FC<Props> = ({ handle, metafields }) => {
-
-  console.log({metafields})
   return (
-    <Link legacyBehavior href={`/collections/${handle}`} >
+    <Link href={`/collections/${handle}`} >
         {metafields[0]?.reference.image && (
           <Image
             src={metafields[0].reference.image.originalSrc}
             alt="Hero Banner"
-            width={1200}
-            height={570}
-            layout='responsive'
+            width={1000}
+            height={1000}
+            className='max-md:h-56 h-full w-full'
           />
         )}
     </Link>
