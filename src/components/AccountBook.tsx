@@ -19,7 +19,7 @@ export default function AccountBook({ customer, addresses }: { customer: Custome
           )}
           <div className="w-48">
             <Button
-            gradientMonochrome="success"
+           color='warning'
               onClick={()=>router.push(`account?${convertObjectToQueryString({
                 modal: 'address-add',
               })}`)}

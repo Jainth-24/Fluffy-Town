@@ -75,12 +75,12 @@ export default function RegisterPage() {
   return (
     <StoreLayout>
       <AuthLayout>
-        <form action={handleSubmit} noValidate className="p-8 shadow-md">
+        <form action={handleSubmit} className="p-8 shadow-md">
           <FormHeader title="Create an Account" />
 
           <div className="mb-4 mt-8">
             <label htmlFor="firstname" className="block text-sm font-medium text-gray-700">
-              First Name
+              First Name<span className="ml-1 text-red-500">*</span>
             </label>
             <input
               className={`w-full rounded border px-4 py-2 focus:border-blue-500 focus:outline-none ${
@@ -108,7 +108,6 @@ export default function RegisterPage() {
               name="lastName"
               type="text"
               autoComplete="lastName"
-              required
               placeholder="Enter your last Name"
               aria-label="lastName"
             />
@@ -116,7 +115,7 @@ export default function RegisterPage() {
           </div>
           <div className="mb-4">
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              Email address
+              Email address<span className="ml-1 text-red-500">*</span>
             </label>
             <input
               className={`w-full rounded border px-4 py-2 focus:border-blue-500 focus:outline-none ${
@@ -135,7 +134,7 @@ export default function RegisterPage() {
           </div>
           <div className="mb-4">
             <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-              Password
+              Password<span className="ml-1 text-red-500">*</span>
             </label>
             <input
               className={`w-full rounded border px-4 py-2 focus:border-blue-500 focus:outline-none ${

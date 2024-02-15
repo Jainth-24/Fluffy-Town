@@ -82,7 +82,7 @@ export default function RecoverPassword() {
           {isSubmitted && (
             <div className="mt-8 justify-center flex">
               <Button
-                gradientMonochrome="success"
+                color='warning'
                 onClick={() => router.replace('/')} // Navigate to the home page
                 className=""
               >

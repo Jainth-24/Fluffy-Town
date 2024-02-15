@@ -67,7 +67,7 @@ const Orders = ({
     <div>
       <PageHeader heading="Order detail">
         <Link href="/account">
-          <Button gradientMonochrome={"success"}>Return to Account Overview</Button>
+          <Button color='warning'>Return to Account Overview</Button>
         </Link>
       </PageHeader>
       <div className="w-full p-6 sm:grid-cols-1 md:p-8 lg:p-12 lg:py-6">

@@ -57,7 +57,7 @@ export default function LoginPage() {
     <StoreLayout>
       <AuthLayout>
         {unidentifiedUserError && <p className="mt-4 text-red-500">{unidentifiedUserError}</p>}
-        <form action={handleSubmit} noValidate className="w-full max-w-md rounded bg-white p-8 shadow-md">
+        <form action={handleSubmit} className="w-full max-w-md rounded bg-white p-8 shadow-md">
           <FormHeader title="Sign in" />
           <div className="my-6">
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">

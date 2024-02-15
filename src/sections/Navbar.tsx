@@ -110,13 +110,13 @@ export default function Header(props: any) {
             </Dropdown>
           </>
         ) : (
-          <Button gradientMonochrome="success" href="/account">
+          <Button color="warning" size={"sm"} href="/account" className='h-10 self-center'>
             Login
           </Button>
         )}
         <form method="get" action="/search" className="flex items-center gap-2 sm:hidden ml-5">
           <input
-            className="p-2 border-b border-gray-300 rounded-md w-28 placeholder:opacity-20"
+            className="p-2 border-b border-gray-300 rounded-md w-full placeholder:opacity-20"
             type="search"
             placeholder="Search"
             name="q"

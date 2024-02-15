@@ -251,7 +251,7 @@ function PriceRangeFilter({ max, min }: { max?: number; min?: number }) {
           onChange={onChangeMax}
         />
       </label>
-      <Button className="mt-5" gradientMonochrome="success" onClick={() => clearFilter()}>
+      <Button className="mt-5" color='warning' onClick={() => clearFilter()}>
         Clear
       </Button>
     </div>

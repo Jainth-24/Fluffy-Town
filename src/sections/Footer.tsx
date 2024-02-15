@@ -10,7 +10,7 @@ import {
   FooterTitle,
 } from 'flowbite-react';
 import { useEffect, useState } from 'react';
-import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
+import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter, BsWhatsapp } from 'react-icons/bs';
 
 export default function FooterSection(props: any) {
   const { menu, shop } = props;
@@ -35,11 +35,9 @@ export default function FooterSection(props: any) {
         <div className="w-full">
           <div className="w-full sm:flex sm:items-center sm:justify-between">
             <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
-              <FooterIcon href="#" icon={BsFacebook} className='hover:bg-black-500 shadow-md'/>
-              <FooterIcon href="#" icon={BsInstagram} />
-              <FooterIcon href="#" icon={BsTwitter} />
-              <FooterIcon href="#" icon={BsGithub} />
-              <FooterIcon href="#" icon={BsDribbble} />
+              <FooterIcon href="#" icon={BsFacebook}/>
+              <FooterIcon href="https://www.instagram.com/fluffytown_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" icon={BsInstagram} />
+              <FooterIcon href="#" icon={BsWhatsapp} />
             </div>
           </div>
           <FooterDivider />

@@ -56,7 +56,7 @@ const ProductForm = ({ product }: { product: Product & { selectedVariant: Produc
                   ]}
                   variant="primary"
                   data-test="add-to-cart"
-                  className="bg-green-400 p-3 rounded-md text-white shadow-md"
+                  className="bg-yellow-400 p-3 rounded-md text-white shadow-md"
                 >
                   <Text as="span" className="">
                     <span>Add to Cart</span>

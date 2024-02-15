@@ -14,7 +14,7 @@ export default function FormButton({
     <div className='flex justify-center'>
       <Button
         isProcessing={status?.pending}
-        gradientMonochrome="success"
+       color='warning'
         className={'rounded-md px-4 w-full'}
         type="submit"
       >

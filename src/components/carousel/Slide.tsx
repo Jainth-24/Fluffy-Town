@@ -21,8 +21,8 @@ const Slide: React.FC<Props> = ({ handle, metafields }) => {
             src={metafields[0].reference.image.originalSrc}
             alt="Hero Banner"
             width={1200}
-            height={370}
-            
+            height={570}
+            layout='responsive'
           />
         )}
     </Link>
