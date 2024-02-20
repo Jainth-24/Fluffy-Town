@@ -56,7 +56,7 @@ export default function RecoverPassword() {
   return (
     <StoreLayout>
       <AuthLayout>
-        <div className="text-center">
+        <div className="rounded-lg bg-white p-6 text-center shadow-md">
           <FormHeader title={headings[isSubmitted ? 'submited' : 'default'].title} />
           <p className="mt-4">{headings[isSubmitted ? 'submited' : 'default'].description}</p>
           {!isSubmitted && (
