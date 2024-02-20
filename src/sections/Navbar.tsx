@@ -65,7 +65,7 @@ export default function Header(props: any) {
           className="mr-3 max-md:h-10 sm:h-9 lg:h-12"
           alt="Profile Logo"
         />
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">{shop.name}</span>
+        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white" >{shop.name}</span>
       </NavbarBrand>
       <div className="mr-2 flex md:order-2">
         <NavbarToggle className="mx-2" />

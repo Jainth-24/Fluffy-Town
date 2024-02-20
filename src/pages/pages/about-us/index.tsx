@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { getPage } from '@site/lib/shopify';
 import { StoreLayout } from '@site/layouts/StoreLayout';
+import { Spinner } from 'flowbite-react';
 
 const About = () => {
   const [pageData, setPageData] = useState<any>(null);
@@ -31,7 +32,7 @@ const About = () => {
           <div dangerouslySetInnerHTML={{ __html: page.body }} />
         </StoreLayout>
       ) : (
-        <div>Loading...</div>
+        <Spinner color="warning" aria-label="Warning spinner example" size="lg"/>
       )}
     </div>
   );
