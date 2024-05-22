@@ -6,7 +6,6 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const cartIdCookie = req.cookies?.cartId;
-
   if (cartIdCookie) {
     try {
       const cart = await getCart(cartIdCookie);

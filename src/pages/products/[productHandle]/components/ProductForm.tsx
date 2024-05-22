@@ -72,7 +72,6 @@ const ProductForm = ({ product }: { product: Product & { selectedVariant: Produc
 };
 
 const ProductOptions = ({ options }: { options: ProductOption[] }) => {
-	console.log({options})
   return (
     <>
       {options

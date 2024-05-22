@@ -20,7 +20,6 @@ interface ProductPageProps {
 
 const ProductPage: React.FC<ProductPageProps> = ({ product, shop, relatedProducts, searchParams }) => {
   const selectedVariant = product?.selectedVariant ?? product?.variants.nodes[0];
-  console.log({ selectedVariant });
   const search = new URLSearchParams(searchParams);
   const url = `/products/${product?.handle}`;
   const description = truncate(product?.seo?.description ?? product?.description ?? '');

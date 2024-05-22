@@ -10,7 +10,6 @@ import React, { useEffect, useState } from 'react';
 const Category = () => {
   const router = useRouter(); // Get the router object
   const { slug } = router.query as { slug: string };
-  console.log({ slug });
   
   const [data, setData] = useState<any | null>(null);
 
@@ -38,9 +37,6 @@ const Category = () => {
   const selectedCategory = data?.nodes.filter(
     (item:any) => item.metafields[1].key === 'category' && item.metafields[1].value.toLowerCase() === slug.toLowerCase()
   );
-
-  console.log({ data });
-  console.log({ selectedCategory });
 
   return (
     <StoreLayout>

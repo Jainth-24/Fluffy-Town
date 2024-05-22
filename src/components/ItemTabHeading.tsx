@@ -17,7 +17,6 @@ const ItemTabHeading = (option: IOption) => {
     <>
       {option.values.map((value, index) => {
         const checked = isChecked(option.name, value);
-		console.log({})
         const id = `option-${index}-${value}`;
         return (
           <Text key={id}>
