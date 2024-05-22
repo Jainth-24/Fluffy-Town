@@ -3,6 +3,7 @@ import useCartStore from '@site/store/cart-store';
 
 const useCartFetcher = () => {
   const addCatItem = async ({ variantId }: { variantId: string }) => {
+   
     const response = await fetch(`/api/cart`, {
       method: 'POST',
       body: JSON.stringify({

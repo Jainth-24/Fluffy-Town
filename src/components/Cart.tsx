@@ -30,10 +30,9 @@ export function CartDetails({ layout }: { layout: Layouts }) {
   // @todo: get optimistic cart cost
   const cartHasItems = !!cart && cart.totalQuantity > 0;
   const container = {
-    drawer: 'grid grid-cols-1 h-screen-no-nav grid-rows-[1fr_auto]',
+    drawer: 'grid grid-cols-1 h-full grid-rows-[1fr_auto]',
     page: 'w-full pb-12 grid md:grid-cols-2 md:items-start gap-8 md:gap-8 lg:gap-12',
-  };
-
+  };   
   const isSubTotal = Boolean(parseInt(cart?.cost?.subtotalAmount?.amount || '0'));
 
   return (
@@ -46,7 +45,7 @@ export function CartDetails({ layout }: { layout: Layouts }) {
         </CartSummary>
       )}
     </div>
-  );
+  );  
 }
 
 /**
@@ -106,7 +105,7 @@ function CartDiscounts({ discountCodes }: { discountCodes: CartType['discountCod
   );
 }
 
-function CartLines({ layout = 'drawer' }: { layout: Layouts }) {
+function  CartLines({ layout = 'drawer' }: { layout: Layouts }) {
   const { editCartItem, deleteCartItem } = useCartFetcher();
   const cart = useCartStore((state) => state.cart);
   const currentLines: any = cart?.lines || [];
@@ -115,7 +114,7 @@ function CartLines({ layout = 'drawer' }: { layout: Layouts }) {
 
   const className = clsx([
     y > 0 ? 'border-t' : '',
-    layout === 'page' ? 'grow md:translate-y-4' : 'sm-max:pt-2 overflow-auto px-6 pb-6 transition md:px-12',
+    layout === 'page' ? 'grow md:translate-y-4' : 'sm-max:pt-2 px-6 pb-6 transition md:px-12',
   ]);
 
   return (
@@ -138,7 +137,7 @@ function CartCheckoutActions({ checkoutUrl }: { checkoutUrl: string }) {
   if (!checkoutUrl) return null;
 
   return (
-    <div className="flex flex-col mt-2">
+    <div className="flex flex-col my-2 pb-10">
       <a href={checkoutUrl} target="_self">
         <Button as="span">Continue to Checkout</Button>
       </a>
@@ -188,7 +187,7 @@ export function CartEmpty({ layout = 'drawer' }: { layout?: Layouts }) {
 
   const container = {
     drawer: clsx([
-      'h-screen-no-nav content-start gap-4 overflow-y-scroll px-6 pb-8 transition md:gap-12 md:px-12 md:pb-12',
+      'h-screen content-start gap-4 overflow-y-scroll px-6 pb-8 transition md:gap-12 md:px-12 md:pb-12',
       y > 0 ? 'border-t' : '',
     ]),
     page: clsx([hidden ? '' : 'grid', `w-full gap-4 pb-5 md:items-start md:gap-8 lg:gap-12`]),

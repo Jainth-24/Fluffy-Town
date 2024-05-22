@@ -158,7 +158,7 @@ function CartDrawer() {
       heading="Cart"
       openFrom="right"
     >
-      <div className="grid ">
+      <div className="grid h-full overflow-y-auto">
         <Cart layout="drawer" />
       </div>
     </Drawer>

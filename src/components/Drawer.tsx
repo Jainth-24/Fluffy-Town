@@ -43,11 +43,11 @@ export function Drawer({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black bg-opacity-25" />
+          <div className="fixed inset-0 bg-black bg-opacity-25 " />
         </Transition.Child>
 
-        <div className="fixed inset-0 ">
-          <div className="absolute inset-0 overflow-hidden">
+        <div className="fixed inset-0">
+          <div className="absolute inset-0">
             <div
               className={clsx('fixed inset-y-0 flex max-w-full', {
                 'right-0': openFrom === 'right',
